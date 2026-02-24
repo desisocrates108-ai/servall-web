@@ -1787,6 +1787,7 @@
 
                     let razorpayKey = "rzp_test_YourTestKeyHere"; // Fallback
                     let razorpayOrderId = null;
+                    let razorpayDbId = null;
 
                     try {
                         const configRes = await fetch('http://localhost:5000/api/v1/misc/config');
@@ -1795,15 +1796,17 @@
                             razorpayKey = configData.data.data.razorpayKeyId;
                         }
 
-                        const orderRes = await fetch('http://localhost:5000/api/v1/misc/create-order', {
+                        // STEP 1: Create Unpaid App Order & Razorpay Order
+                        const orderRes = await fetch('http://localhost:5000/api/v1/misc/create-service-order', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ amount: Math.round(currentOrderTotal * 100) })
+                            body: JSON.stringify(payload)
                         });
                         const orderData = await orderRes.json();
                         console.log("DEBUG orderData", orderData);
-                        if (orderData?.data?.orderId) {
+                        if (orderData?.data?.orderId && orderData?.data?.dbId) {
                             razorpayOrderId = orderData.data.orderId;
+                            razorpayDbId = orderData.data.dbId;
                         } else {
                             throw new Error('Could not create an order on the server');
                         }
@@ -1827,16 +1830,20 @@
                         "handler": async function (paymentResponse) {
                             text.textContent = 'Confirming Booking...';
                             try {
-                                payload.razorpay_payment_id = paymentResponse.razorpay_payment_id;
-                                payload.razorpay_order_id = paymentResponse.razorpay_order_id;
-                                payload.razorpay_signature = paymentResponse.razorpay_signature;
+                                // STEP 2: Verify Payment & Mark Paid
+                                const verifyPayload = {
+                                    dbId: razorpayDbId,
+                                    razorpay_payment_id: paymentResponse.razorpay_payment_id,
+                                    razorpay_order_id: paymentResponse.razorpay_order_id,
+                                    razorpay_signature: paymentResponse.razorpay_signature
+                                };
 
                                 const response = await fetch('http://localhost:5000/api/v1/misc/book/service', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'
                                     },
-                                    body: JSON.stringify(payload)
+                                    body: JSON.stringify(verifyPayload)
                                 });
 
                                 if (!response.ok) {
@@ -1891,6 +1898,13 @@ _Please review and confirm the booking._`;
                                 btnSubmit.disabled = false;
                                 text.textContent = 'Pay and Book';
                                 spinner.classList.add('hidden');
+                                if (razorpayDbId) {
+                                    fetch('http://localhost:5000/api/v1/misc/order/fail', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ dbId: razorpayDbId })
+                                    }).catch(console.error);
+                                }
                             }
                         }
                     };
@@ -2510,6 +2524,16 @@ _Please review and confirm the booking._`;
                 const executeAmcPayment = async () => {
                     let razorpayKey = "YOUR_RAZORPAY_KEY"; // Fallback
                     let razorpayOrderId = null;
+                    let razorpayDbId = null;
+
+                    const amcPayload = {
+                        name: amcName.value.trim(),
+                        phone: amcPhone.value.trim(),
+                        state: amcState.value,
+                        storeId: amcStore.value,
+                        packageId: amcPlanType.value,
+                        amount: plan.numPrice
+                    };
 
                     try {
                         const configRes = await fetch('http://localhost:5000/api/v1/misc/config');
@@ -2518,14 +2542,16 @@ _Please review and confirm the booking._`;
                             razorpayKey = configData?.data?.data?.razorpayKeyId;
                         }
 
-                        const orderRes = await fetch('http://localhost:5000/api/v1/misc/create-order', {
+                        const orderRes = await fetch('http://localhost:5000/api/v1/misc/create-amc-order', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ amount: plan.numPrice * 100 })
+                            body: JSON.stringify(amcPayload)
                         });
                         const orderData = await orderRes.json();
-                        if (orderData?.data?.orderId) {
+
+                        if (orderData?.data?.orderId && orderData?.data?.dbId) {
                             razorpayOrderId = orderData.data.orderId;
+                            razorpayDbId = orderData.data.dbId;
                         } else {
                             throw new Error('Could not create an order on the server');
                         }
@@ -2547,13 +2573,9 @@ _Please review and confirm the booking._`;
                         "image": "images/logo.png",
                         "order_id": razorpayOrderId,
                         "handler": async function (paymentResponse) {
-                            const payload = {
-                                name: amcName.value.trim(),
-                                phone: amcPhone.value.trim(),
-                                state: amcState.value,
-                                storeId: amcStore.value,
-                                packageId: amcPlanType.value,
-                                amount: plan.numPrice,
+                            // STEP 2: Verify Payment & Mark Paid
+                            const verifyPayload = {
+                                dbId: razorpayDbId,
                                 razorpay_payment_id: paymentResponse.razorpay_payment_id,
                                 razorpay_order_id: paymentResponse.razorpay_order_id,
                                 razorpay_signature: paymentResponse.razorpay_signature
@@ -2563,7 +2585,7 @@ _Please review and confirm the booking._`;
                                 const response = await fetch('http://localhost:5000/api/v1/misc/book/amc', {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify(payload)
+                                    body: JSON.stringify(verifyPayload)
                                 });
                                 const data = await response.json();
 
@@ -2592,6 +2614,21 @@ _Please review and confirm the booking._`;
                         },
                         "theme": {
                             "color": "#dc2626"
+                        },
+                        "modal": {
+                            "ondismiss": function () {
+                                btnAmcPay.disabled = false;
+                                document.getElementById('btn-amc-pay-text').textContent = 'Proceed to Pay';
+                                document.getElementById('btn-amc-pay-spinner').classList.add('hidden');
+
+                                if (razorpayDbId) {
+                                    fetch('http://localhost:5000/api/v1/misc/order/fail', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ dbId: razorpayDbId })
+                                    }).catch(console.error);
+                                }
+                            }
                         }
                     };
 
