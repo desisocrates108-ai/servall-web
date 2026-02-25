@@ -347,43 +347,63 @@
                         </div>
 
                         <!-- Step 3 -->
-                        <div id="step-3" class="form-step hidden flex-col gap-4 flex-1 animate-fade-in-up">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="col-span-2">
-                                    <label class="text-xs font-semibold text-slate-500 mb-1 block">PREFERRED
-                                        DATE</label>
-                                    <input type="date" id="bf-date" onclick="try{this.showPicker()}catch(e){}"
-                                        class="cursor-pointer flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                        <div id="step-3" class="form-step hidden flex-col flex-1 animate-fade-in-up">
+                            <!-- Scrollable fields area — px-0.5 prevents focus ring edge clipping -->
+                            <div class="flex flex-col gap-4 overflow-y-auto flex-1 px-0.5 pb-1">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="col-span-2">
+                                        <label class="text-xs font-semibold text-slate-500 mb-1 block">PREFERRED
+                                            DATE</label>
+                                        <input type="date" id="bf-date" onclick="try{this.showPicker()}catch(e){}"
+                                            class="cursor-pointer flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus:outline-none focus:border-red-500 disabled:cursor-not-allowed disabled:opacity-50">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-semibold text-slate-500 mb-1 block">TIME SLOT
+                                        (OPTIONAL)</label>
+                                    <select id="bf-time"
+                                        class="w-full h-12 px-3 rounded-xl border border-slate-200 bg-white text-sm focus:border-red-500 focus:outline-none">
+                                        <option value="">Select Slot</option>
+                                        <option value="morning">Morning (9AM - 12PM)</option>
+                                        <option value="afternoon">Afternoon (12PM - 4PM)</option>
+                                        <option value="evening">Evening (4PM - 7PM)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-semibold text-slate-500 mb-1 block">CITY</label>
+                                    <select id="bf-city" disabled
+                                        class="w-full h-12 px-3 rounded-xl border border-slate-200 bg-white text-sm focus:border-red-500 focus:outline-none">
+                                        <option value="">Loading cities...</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-semibold text-slate-500 mb-1 block">ZIP CODE *</label>
+                                    <input type="text" id="bf-zipcode" required placeholder="e.g. 411001" maxlength="6"
+                                        inputmode="numeric" pattern="[0-9]{6}"
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:border-red-500">
+                                    <p class="text-xs text-slate-400 mt-1">Enter your 6-digit area PIN code</p>
+                                </div>
+                                <div
+                                    class="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                                    <input type="checkbox" id="bf-pickup" class="w-4 h-4 accent-red-600 cursor-pointer">
+                                    <label for="bf-pickup"
+                                        class="text-sm font-medium text-slate-700 cursor-pointer select-none">
+                                        <span class="font-semibold">Vehicle Pickup Required</span>
+                                        <span class="block text-xs text-slate-400 font-normal">We'll pick up your
+                                            vehicle
+                                            from your location</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-semibold text-slate-500 mb-1 block">SPECIAL INSTRUCTIONS
+                                        (OPTIONAL)</label>
+                                    <textarea id="bf-instructions" rows="2"
+                                        placeholder="Any specific issues or requests?"
+                                        class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:border-red-500 disabled:cursor-not-allowed disabled:opacity-50 resize-none"></textarea>
                                 </div>
                             </div>
-                            <div>
-                                <label class="text-xs font-semibold text-slate-500 mb-1 block">TIME SLOT
-                                    (OPTIONAL)</label>
-                                <select id="bf-time"
-                                    class="w-full h-12 px-3 rounded-xl border border-slate-200 bg-white text-sm focus:border-red-500 focus:outline-none">
-                                    <option value="">Select Slot</option>
-                                    <option value="morning">Morning (9AM - 12PM)</option>
-                                    <option value="afternoon">Afternoon (12PM - 4PM)</option>
-                                    <option value="evening">Evening (4PM - 7PM)</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="text-xs font-semibold text-slate-500 mb-1 block">CITY</label>
-                                <select id="bf-city" disabled
-                                    class="w-full h-12 px-3 rounded-xl border border-slate-200 bg-white text-sm focus:border-red-500 focus:outline-none">
-                                    <option value="">Loading cities...</option>
-                                </select>
-                            </div>
 
-
-                            <div>
-                                <label class="text-xs font-semibold text-slate-500 mb-1 block">SPECIAL INSTRUCTIONS
-                                    (OPTIONAL)</label>
-                                <textarea id="bf-instructions" rows="2" placeholder="Any specific issues or requests?"
-                                    class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"></textarea>
-                            </div>
-
-                            <div class="mt-auto pt-4 flex gap-3">
+                            <div class="mt-4 pt-4 flex gap-3 border-t border-slate-100">
                                 <button id="btn-back-3"
                                     class="flex-1 inline-flex items-center justify-center rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 border border-input bg-background hover:bg-accent hover:text-accent-foreground text-slate-900">
                                     Back
@@ -1356,6 +1376,13 @@
                             </select>
                         </div>
                     </div>
+                    <div>
+                        <label class="text-xs font-semibold text-slate-500 mb-1 block">ZIP CODE *</label>
+                        <input type="text" id="amc-zipcode" required placeholder="e.g. 411001" maxlength="6"
+                            inputmode="numeric" pattern="[0-9]{6}"
+                            class="flex h-11 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-red-500 focus:outline-none">
+                        <p class="text-xs text-slate-400 mt-1">Enter your 6-digit area PIN code</p>
+                    </div>
                 </form>
 
                 <!-- Success State (Initially Hidden) -->
@@ -1560,7 +1587,8 @@
 
             const validateStep3 = () => {
                 const btnNext3 = document.getElementById('btn-next-3');
-                if (bfDate.value !== '' && bfCity.value !== '') {
+                const zipVal = document.getElementById('bf-zipcode')?.value.trim() || '';
+                if (bfDate.value !== '' && bfCity.value !== '' && /^\d{6}$/.test(zipVal)) {
                     btnNext3.disabled = false;
                 } else {
                     btnNext3.disabled = true;
@@ -1578,6 +1606,7 @@
 
             bfDate.addEventListener('input', validateStep3);
             bfCity.addEventListener('change', validateStep3);
+            document.getElementById('bf-zipcode')?.addEventListener('input', validateStep3);
 
             // Step Navigation Functions
             const goToStep = (current, next, currentInd, nextInd) => {
@@ -1802,6 +1831,8 @@
                         email: document.getElementById('bf-email').value.trim() || 'customer@example.com',
                         phone: bfPhone.value.trim(),
                         city: bfCity.value,
+                        zipCode: document.getElementById('bf-zipcode').value.trim(),
+                        pickupRequired: document.getElementById('bf-pickup').checked,
                         serviceType: selectedServiceNames,
                         vehicleBrand: bfBrand.value.trim(),
                         vehicleModel: bfModel.value.trim(),
@@ -1882,13 +1913,15 @@
 - *Name:* ${payload.name}
 - *Phone:* ${payload.phone}
 ${payload.email ? `- *Email:* ${payload.email}\n` : ''}- *City:* ${payload.city}
+- *ZIP Code:* ${payload.zipCode}
 
 *Vehicle & Service Info:*
 - *Vehicle:* ${payload.vehicleBrand} ${payload.vehicleModel}
 - *Service Type:* ${payload.serviceType}
 - *Preferred Date:* ${payload.date}
+- *Vehicle Pickup:* ${payload.pickupRequired ? 'Yes' : 'No'}
 - *Total Paid:* ₹${currentOrderTotal}
-- *Payment ID:* ${payload.paymentId}
+- *Payment ID:* ${paymentResponse.razorpay_payment_id}
 
 *Additional Instructions:*
 > ${payload.instruction || 'No specific instructions provided.'}
@@ -2327,6 +2360,7 @@ _Please review and confirm the booking._`;
             const amcName = document.getElementById('amc-name');
             const amcPhone = document.getElementById('amc-phone');
             const amcPhoneError = document.getElementById('amc-phone-error');
+            const amcZipCode = document.getElementById('amc-zipcode');
 
             let AMC_PLANS = {};
 
@@ -2499,7 +2533,7 @@ _Please review and confirm the booking._`;
                     amcPhoneError.classList.add('hidden');
                 }
 
-                if (amcName.value.trim() !== '' && isPhoneValid && amcState.value !== '' && amcStore.value !== '') {
+                if (amcName.value.trim() !== '' && isPhoneValid && amcState.value !== '' && amcStore.value !== '' && /^\d{6}$/.test(amcZipCode.value.trim())) {
                     btnAmcPay.disabled = false;
                 } else {
                     btnAmcPay.disabled = true;
@@ -2508,6 +2542,7 @@ _Please review and confirm the booking._`;
 
             amcName.addEventListener('input', validateAmcForm);
             amcPhone.addEventListener('input', validateAmcForm);
+            amcZipCode.addEventListener('input', validateAmcForm);
 
             amcState.addEventListener('change', (e) => {
                 const selectedState = e.target.value;
@@ -2555,6 +2590,7 @@ _Please review and confirm the booking._`;
                         name: amcName.value.trim(),
                         phone: amcPhone.value.trim(),
                         state: amcState.value,
+                        zipCode: amcZipCode.value.trim(),
                         storeId: amcStore.value,
                         packageId: amcPlanType.value,
                         amount: plan.numPrice
