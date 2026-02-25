@@ -82,8 +82,9 @@
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="#" class="flex items-center">
-                    <img id="nav-logo" src="images/logo.png" alt="SERVALL Logo"
-                        class="h-12 w-auto transition-all duration-300" style="filter: brightness(0) invert(1);" />
+                    <img id="nav-logo" src="https://servall-storage.s3.ap-south-1.amazonaws.com/assets/servall-logo.png"
+                        alt="SERVALL Logo" class="h-12 w-auto transition-all duration-300"
+                        style="filter: brightness(0) invert(1);" />
                 </a>
             </div>
 
@@ -351,8 +352,8 @@
                                 <div class="col-span-2">
                                     <label class="text-xs font-semibold text-slate-500 mb-1 block">PREFERRED
                                         DATE</label>
-                                    <input type="date" id="bf-date"
-                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                                    <input type="date" id="bf-date" onclick="try{this.showPicker()}catch(e){}"
+                                        class="cursor-pointer flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
                                 </div>
                             </div>
                             <div>
@@ -1176,8 +1177,9 @@
                     <div class="flex flex-col">
                         <div class="flex items-center">
                             <a href="#" class="flex items-center">
-                                <img id="nav-logo" src="images/logo.png" alt="SERVALL Logo"
-                                    class="h-12 w-auto transition-all duration-300"
+                                <img id="nav-logo"
+                                    src="https://servall-storage.s3.ap-south-1.amazonaws.com/assets/servall-logo.png"
+                                    alt="SERVALL Logo" class="h-12 w-auto transition-all duration-300"
                                     style="filter: brightness(0) invert(1);" />
                             </a>
                         </div>
@@ -1386,6 +1388,29 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
+
+        // Setup Date Picker Minimum (Tomorrow onwards)
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('bf-date');
+            if (dateInput) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+
+                // Format directly matching local timezone offset (avoiding UTC bugs on border hours)
+                const yyyy = tomorrow.getFullYear();
+                const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+                const dd = String(tomorrow.getDate()).padStart(2, '0');
+                dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+                // Set max date to 1 year ahead to prevent infinite year digits (e.g., year 50000)
+                const maxDate = new Date(tomorrow);
+                maxDate.setFullYear(maxDate.getFullYear() + 1);
+                const maxY = maxDate.getFullYear();
+                const maxM = String(maxDate.getMonth() + 1).padStart(2, '0');
+                const maxD = String(maxDate.getDate()).padStart(2, '0');
+                dateInput.max = `${maxY}-${maxM}-${maxD}`;
+            }
+        });
 
         // Navbar Scroll Logic & Mobile Menu Toggle
         document.addEventListener('DOMContentLoaded', () => {
@@ -1825,7 +1850,7 @@
                         "currency": "INR",
                         "name": "Servall",
                         "description": "Service Booking Payment",
-                        "image": "https://servall.in/logo.png",
+                        "image": "https://servall-storage.s3.ap-south-1.amazonaws.com/assets/servall-logo.png",
                         "order_id": razorpayOrderId,
                         "handler": async function (paymentResponse) {
                             text.textContent = 'Confirming Booking...';
@@ -2570,7 +2595,7 @@ _Please review and confirm the booking._`;
                         "currency": "INR",
                         "name": "Servall Automotive",
                         "description": plan.name,
-                        "image": "images/logo.png",
+                        "image": "https://servall-storage.s3.ap-south-1.amazonaws.com/assets/servall-logo.png",
                         "order_id": razorpayOrderId,
                         "handler": async function (paymentResponse) {
                             // STEP 2: Verify Payment & Mark Paid
