@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Fix for Razorpay accelerometer violations -->
     <meta http-equiv="Permissions-Policy" content="accelerometer=*, payment=*">
-    <title>Servall Landing Page</title>
+    <title id="dynamic-seo-title">Servall AMC - Annual Maintenance Contract</title>
+    <meta id="dynamic-seo-description" name="description"
+        content="Get the best care for your two-wheeler with Servall AMC.">
+    <meta id="dynamic-seo-keywords" name="keywords" content="bike service, amc, two wheeler care, servall">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -103,7 +106,7 @@
             <div class="hidden lg:flex items-center space-x-6">
                 <!-- App Download Button -->
                 <a href="https://linktr.ee/ServallCRE" target="_blank"
-                    class="group relative inline-flex items-center justify-center h-10 px-4 py-2 font-medium text-white transition-all duration-300 rounded-full bg-slate-800 hover:bg-slate-700 hover:shadow-lg hover:shadow-slate-800/20 overflow-hidden border border-slate-700">
+                    class="dynamic-app-link group relative inline-flex items-center justify-center h-10 px-4 py-2 font-medium text-white transition-all duration-300 rounded-full bg-slate-800 hover:bg-slate-700 hover:shadow-lg hover:shadow-slate-800/20 overflow-hidden border border-slate-700">
                     <span class="relative z-10 flex items-center gap-2 text-sm">
                         <i data-lucide="smartphone" class="w-4 h-4 text-red-500 group-hover:animate-bounce"></i>
                         Get App
@@ -119,10 +122,10 @@
                     <i data-lucide="phone" class="w-[18px] h-[18px]"></i>
                     <span>+91 900 500 9500</span>
                 </button>
-                <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+                <!-- <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
                     class="inline-flex items-center justify-center rounded-xl text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-12 px-8 py-3 bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/20">
                     Book Now
-                </button>
+                </button> -->
             </div>
 
             <!-- Mobile Toggle -->
@@ -140,7 +143,7 @@
                 class="text-lg font-medium text-slate-700 py-2 border-b border-slate-50 mobile-link">AMC Plans</a>
             <a href="#faq" class="text-lg font-medium text-slate-700 py-2 border-b border-slate-50 mobile-link">FAQ</a>
             <a href="https://linktr.ee/ServallCRE" target="_blank"
-                class="flex items-center justify-between text-lg font-bold text-slate-900 py-2 border-b border-slate-50 mobile-link group">
+                class="dynamic-app-link flex items-center justify-between text-lg font-bold text-slate-900 py-2 border-b border-slate-50 mobile-link group">
                 <span class="flex items-center gap-2">
                     <i data-lucide="smartphone" class="w-5 h-5 text-red-600"></i>
                     Download App
@@ -189,11 +192,12 @@
                     <span class="text-sm font-bold text-red-400 tracking-wide uppercase">Servall Protect</span>
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
+                <h1 id="dynamic-amc-hero-title"
+                    class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
                     Ride Stress-Free All Year Round.
                 </h1>
 
-                <p class="text-lg text-slate-300 max-w-lg leading-relaxed">
+                <p id="dynamic-amc-hero-subtitle" class="text-lg text-slate-300 max-w-lg leading-relaxed">
                     Complete peace of mind with Servall's Annual Maintenance Contracts. Save on repairs, prevent
                     breakdowns, and get priority service.
                 </p>
@@ -206,7 +210,7 @@
                     <div
                         class="flex items-center gap-3 px-6 h-14 rounded-xl bg-white/10 border border-white/10 backdrop-blur-md">
                         <i data-lucide="phone-call" class="w-5 h-5 text-red-400"></i>
-                        <span class="text-white font-semibold">1800 123 4567</span>
+                        <span class="dynamic-phone-text text-white font-semibold">1800 123 4567</span>
                     </div>
                 </div>
 
@@ -244,43 +248,12 @@
                     <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-600 rounded-full blur-2xl opacity-30">
                     </div>
 
-                    <div class="relative z-10 flex flex-col gap-6">
+                    <div id="dynamic-benefits-container" class="relative z-10 flex flex-col gap-6">
                         <h3 class="text-2xl font-bold text-white border-b border-white/10 pb-4">AMC Member Benefits</h3>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center shrink-0">
-                                <i data-lucide="trending-down" class="w-5 h-5 text-red-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-semibold">Save up to 40%</h4>
-                                <p class="text-sm text-slate-400 mt-1">On annual maintenance and running repairs vs
-                                    pay-as-you-go.</p>
-                            </div>
-                        </div>
 
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
-                                <i data-lucide="truck" class="w-5 h-5 text-blue-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-semibold">Free Pickup & Drop</h4>
-                                <p class="text-sm text-slate-400 mt-1">Convenience at your doorstep for all scheduled
-                                    services.</p>
-                            </div>
-                        </div>
+                        <!-- Benefits will be dynamically injected here via config-manager.js -->
 
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                                <i data-lucide="zap" class="w-5 h-5 text-green-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-semibold">Priority Support</h4>
-                                <p class="text-sm text-slate-400 mt-1">Zero wait time. Your vehicle gets priority bay
-                                    allocation.</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -372,92 +345,116 @@
         </div>
     </section>
 
-    <!-- What's Included Section -->
-    <section class="py-20 bg-slate-900 relative overflow-hidden text-white">
+    <!-- Customer Testimonials Section -->
+    <section class="py-20 bg-slate-50 relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6 relative z-10">
-            <div class="text-center max-w-2xl mx-auto mb-16 why-reveal sr">
+            <div class="text-center max-w-2xl mx-auto mb-16 sr">
                 <span
-                    class="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wider text-red-500 uppercase bg-red-500/10 border border-red-500/20 rounded-full">Comprehensive
-                    Coverage</span>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">What's Included in Your AMC?</h2>
-                <p class="text-lg text-slate-400">Everything your two-wheeler needs for a full year of smooth riding.
-                </p>
+                    class="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wider text-red-600 uppercase bg-red-100 rounded-full">Real
+                    Reviews</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">What Our AMC Members Say</h2>
+                <p class="text-lg text-slate-500">Thousands of riders trust Servall to keep their bikes running all year
+                    long.</p>
             </div>
 
-            <div
-                class="max-w-4xl mx-auto bg-slate-800/50 border border-slate-700 rounded-3xl p-8 md:p-12 shadow-2xl backdrop-blur-sm sr sr-up">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-100">4 Scheduled Services</h4>
-                                <p class="text-sm text-slate-400 mt-1">Periodic maintenance spread across the year.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-100">Engine Oil Replacement</h4>
-                                <p class="text-sm text-slate-400 mt-1">Premium grade oil included in scheduled services.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-100">Air Filter Cleaning</h4>
-                                <p class="text-sm text-slate-400 mt-1">Ensuring optimal engine breathing and
-                                    performance.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-100">Free Labor Charges</h4>
-                                <p class="text-sm text-slate-400 mt-1">Zero labor cost on all covered maintenance tasks.
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-100">Brake Inspection</h4>
-                                <p class="text-sm text-slate-400 mt-1">Thorough check and adjustment of front and rear
-                                    brakes.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-100">Chain Lubrication</h4>
-                                <p class="text-sm text-slate-400 mt-1">Cleaning and lubing for smooth power delivery.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-100">Electrical System Check</h4>
-                                <p class="text-sm text-slate-400 mt-1">Battery, lights, and spark plug inspection.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-100">Foam Wash & Polish</h4>
-                                <p class="text-sm text-slate-400 mt-1">Keep your vehicle looking brand new after every
-                                    service.</p>
-                            </div>
-                        </li>
-                    </ul>
+            <div id="dynamic-reviews-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div
+                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col gap-4 sr sr-up sr-d1">
+                    <div class="flex gap-1">
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-sm">"I signed up for the AMC last year and honestly it
+                        has saved me so much money. Didn't have to worry about a single bill ï¿½ the pickup & drop alone
+                        is worth it!"</p>
+                    <div class="flex items-center gap-3 mt-auto pt-4 border-t border-slate-100">
+                        <div
+                            class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center font-bold text-red-600 text-sm">
+                            RK</div>
+                        <div>
+                            <p class="font-semibold text-slate-900 text-sm">Rahul Kulkarni</p>
+                            <p class="text-xs text-slate-400">Honda Activa Owner, Pune</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div
+                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col gap-4 sr sr-up sr-d2">
+                    <div class="flex gap-1">
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-sm">"Priority service lane is a game changer. Every
+                        time I walk in, my bike is attended to immediately. No more waiting at local mechanics for
+                        hours."</p>
+                    <div class="flex items-center gap-3 mt-auto pt-4 border-t border-slate-100">
+                        <div
+                            class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600 text-sm">
+                            PS</div>
+                        <div>
+                            <p class="font-semibold text-slate-900 text-sm">Priya Sharma</p>
+                            <p class="text-xs text-slate-400">Royal Enfield Owner, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div
+                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col gap-4 sr sr-up sr-d3">
+                    <div class="flex gap-1">
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-sm">"Best investment for my bike. The transparency in
+                        service reports and the quality of work is unmatched. Renewing my AMC without a second thought
+                        this year."</p>
+                    <div class="flex items-center gap-3 mt-auto pt-4 border-t border-slate-100">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-600 text-sm">
+                            AM</div>
+                        <div>
+                            <p class="font-semibold text-slate-900 text-sm">Arjun Mehta</p>
+                            <p class="text-xs text-slate-400">Bajaj Pulsar Owner, Bangalore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Bar -->
+            <div id="dynamic-trust-bar" class="mt-14 flex flex-wrap justify-center gap-10 text-center">
+                <div>
+                    <p class="text-3xl font-black text-red-600">2.5L+</p>
+                    <p class="text-sm text-slate-500 mt-1">Happy Customers</p>
+                </div>
+                <div class="hidden sm:block w-px bg-slate-200"></div>
+                <div>
+                    <p class="text-3xl font-black text-red-600">4.8 &#9733;</p>
+                    <p class="text-sm text-slate-500 mt-1">Average Google Rating</p>
+                </div>
+                <div class="hidden sm:block w-px bg-slate-200"></div>
+                <div>
+                    <p class="text-3xl font-black text-red-600">38+</p>
+                    <p class="text-sm text-slate-500 mt-1">Outlets Across India</p>
+                </div>
+                <div class="hidden sm:block w-px bg-slate-200"></div>
+                <div>
+                    <p class="text-3xl font-black text-red-600">10 Yrs</p>
+                    <p class="text-sm text-slate-500 mt-1">of Trusted Service</p>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- AMC CTA Section -->
     <section class="py-20 bg-gradient-to-br from-red-600 to-red-700 relative overflow-hidden text-center">
         <div class="container mx-auto px-4 relative z-10 animate-fade-in-up">
@@ -472,7 +469,7 @@
     </section>
 
     <!-- AMC FAQ Section -->
-    <section id="faq" class="py-20 bg-slate-50 relative overflow-hidden">
+    <section id="amc-faq" class="py-20 bg-slate-50 relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6 relative z-10">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <span
@@ -480,60 +477,38 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">AMC Common Questions</h2>
             </div>
 
-            <div class="max-w-3xl mx-auto space-y-4">
-                <!-- FAQ 1 -->
-                <div
-                    class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button
-                        class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                        <span class="text-lg font-bold text-slate-900">Can I transfer my AMC if I buy a new bike?</span>
-                        <div
-                            class="faq-icon shrink-0 w-8 h-8 rounded-full bg-slate-50 text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6 text-slate-600 leading-relaxed">
-                        <p>No, the AMC is mapped to the specific vehicle registration number and chassis number. It
-                            cannot be transferred to a new vehicle, but it adds resale value to your current vehicle as
-                            it proves the bike was meticulously maintained.</p>
-                    </div>
-                </div>
+            <div class="max-w-3xl mx-auto space-y-4" id="amc-faq-accordion-container">
+                <!-- APIs fetch here will show amc-specific questions -->
+            </div>
+        </div>
+    </section>
 
-                <!-- FAQ 2 -->
-                <div
-                    class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button
-                        class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                        <span class="text-lg font-bold text-slate-900">What is not covered under the AMC?</span>
-                        <div
-                            class="faq-icon shrink-0 w-8 h-8 rounded-full bg-slate-50 text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6 text-slate-600 leading-relaxed">
-                        <p>The AMC covers scheduled maintenance and labor. Major accident repairs, replacing worn-out
-                            parts like tires, batteries, body panels, and engine overhaul components that are not
-                            strictly periodic maintenance are charged separately, though AMC members often get discounts
-                            on parts.</p>
-                    </div>
-                </div>
+    <!-- FAQ Section -->
+    <section class="py-24 bg-white relative overflow-hidden" id="main-faq">
+        <!-- Background Elements -->
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-50/50 rounded-full blur-[100px] pointer-events-none transform translate-x-1/3 -translate-y-1/3">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-red-50/30 rounded-full blur-[80px] pointer-events-none transform -translate-x-1/3 translate-y-1/3">
+        </div>
 
-                <!-- FAQ 3 -->
-                <div
-                    class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button
-                        class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                        <span class="text-lg font-bold text-slate-900">Is the pickup and drop really free?</span>
-                        <div
-                            class="faq-icon shrink-0 w-8 h-8 rounded-full bg-slate-50 text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6 text-slate-600 leading-relaxed">
-                        <p>Yes! Free pickup and drop is included for all scheduled services under your AMC within a
-                            reasonable radius of our workshops. You simply schedule it via WhatsApp or our App.</p>
-                    </div>
-                </div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span
+                    class="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wider text-red-600 uppercase bg-red-100 rounded-full">
+                    General Questions
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-lg text-slate-600">
+                    Find answers to common questions about our two-wheeler care and services.
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4" id="main-faq-accordion-container">
+                <!-- APIs fetch here will show main/general questions -->
             </div>
         </div>
     </section>
@@ -554,27 +529,29 @@
                                     style="filter: brightness(0) invert(1);" />
                             </a>
                         </div>
-                        <p class="text-sm text-slate-500">Servall is a Multi Brand 2 Wheeler Workshop Chain providing
+                        <p class="text-sm text-slate-500 dynamic-footer-description">Servall is a Multi Brand 2 Wheeler
+                            Workshop Chain providing
                             It's services & Unique User Experience through It's Franchise Network.</p>
                     </div>
                     <!-- <p class="text-slate-400 leading-relaxed text-sm">
-                        Servall is a Multi Brand 2 Wheeler Workshop Chain providing Itâ€™s services & Unique User
-                        Experience through Itâ€™s Franchise Network.
+                        Servall is a Multi Brand 2 Wheeler Workshop Chain providing It's services & Unique User Experience through It's Franchise Network.
                     </p> -->
                     <div class="flex gap-4">
-                        <a href="https://www.facebook.com/servall.india/" target="_blank"
+                        <a href="https://www.facebook.com/servall.india/" class="dynamic-facebook" target="_blank"
                             class="w-10 h-10 rounded-lg bg-white/5 hover:bg-red-600 flex items-center justify-center transition-colors">
                             <i data-lucide="facebook" class="w-4.5 h-4.5"></i>
                         </a>
-                        <a href="https://www.instagram.com/servall.india/" target="_blank"
+                        <a href="https://www.instagram.com/servall.india/" class="dynamic-instagram" target="_blank"
                             class="w-10 h-10 rounded-lg bg-white/5 hover:bg-red-600 flex items-center justify-center transition-colors">
                             <i data-lucide="instagram" class="w-4.5 h-4.5"></i>
                         </a>
-                        <a href="https://www.youtube.com/channel/UCL8s6_8nQ7G2jAyiYxMLm4g" target="_blank"
+                        <a href="https://www.youtube.com/channel/UCL8s6_8nQ7G2jAyiYxMLm4g" class="dynamic-youtube"
+                            target="_blank"
                             class="w-10 h-10 rounded-lg bg-white/5 hover:bg-red-600 flex items-center justify-center transition-colors">
                             <i data-lucide="youtube" class="w-4.5 h-4.5"></i>
                         </a>
-                        <a href="https://www.linkedin.com/company/servall-automotive/" target="_blank"
+                        <a href="https://www.linkedin.com/company/servall-automotive/" class="dynamic-linkedin"
+                            target="_blank"
                             class="w-10 h-10 rounded-lg bg-white/5 hover:bg-red-600 flex items-center justify-center transition-colors">
                             <i data-lucide="linkedin" class="w-4.5 h-4.5"></i>
                         </a>
@@ -631,7 +608,8 @@
                         <div class="flex items-start gap-4">
                             <i data-lucide="map-pin" class="text-red-500 shrink-0 mt-1 w-4.5 h-4.5"></i>
                             <div>
-                                <p>123, Servall HQ, Auto Market Road, Pune, Maharashtra - 411001</p>
+                                <p class="dynamic-address-text">123, Servall HQ, Auto Market Road, Pune, Maharashtra -
+                                    411001</p>
                             </div>
                         </div>
                     </div>
@@ -642,7 +620,7 @@
             <!-- Bottom Bar -->
             <div
                 class="border-t border-slate-800 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-                <p>Â© 2026 Servall Automotive Pvt. Ltd. All rights reserved.</p>
+                <p class="dynamic-copyright-text">© 2026 Servall Automotive Pvt. Ltd. All rights reserved.</p>
                 <div class="flex gap-6">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
@@ -1953,7 +1931,7 @@ _Please review and confirm the booking._`;
 
 *Subscription Info:*
 - *Package ID:* ${amcPayload.packageId}
-- *Total Paid:* ₹${amcPayload.amount}
+- *Total Paid:* ?${amcPayload.amount}
 - *Payment ID:* ${paymentResponse.razorpay_payment_id}
 ----------------------------------------
 _Please review and confirm the subscription._`;
@@ -2093,8 +2071,11 @@ _Please review and confirm the subscription._`;
         /* --- Marquee strip --- */
         .marquee-track {
             display: flex;
+            flex-wrap: nowrap !important;
+            white-space: nowrap;
             width: max-content;
             animation: marqueeScroll 28s linear infinite;
+            align-items: center;
         }
 
         .marquee-track:hover {
@@ -2254,7 +2235,12 @@ _Please review and confirm the subscription._`;
                         }
                     });
                 }, { threshold: 0.12 });
-                srEls.forEach(el => srObs.observe(el));
+
+                window.observeNewSR = () => {
+                    document.querySelectorAll('.sr:not(.in)').forEach(el => srObs.observe(el));
+                };
+
+                observeNewSR();
             }
 
             /* -- 2. Animated Counters (Servall in Numbers) -- */
@@ -2283,7 +2269,7 @@ _Please review and confirm the subscription._`;
                 counters.forEach(el => countObs.observe(el));
             }
 
-            /* -- 3. Service cards — stagger pop-in -- */
+            /* -- 3. Service cards ï¿½ stagger pop-in -- */
             const serviceCards = document.querySelectorAll('#services .group');
             if (serviceCards.length) {
                 const cardObs = new IntersectionObserver((entries) => {
@@ -2304,7 +2290,7 @@ _Please review and confirm the subscription._`;
                 });
             }
 
-            /* -- 4. Why Servall cards — stagger pop-in -- */
+            /* -- 4. Why Servall cards ï¿½ stagger pop-in -- */
             const whyCards = document.querySelectorAll('#why-us .why-card');
             if (whyCards.length) {
                 const whyObs = new IntersectionObserver((entries) => {
@@ -2377,13 +2363,13 @@ _Please review and confirm the subscription._`;
                 });
             }
 
-            /* -- 9. Hero stat pills — float animation -- */
+            /* -- 9. Hero stat pills ï¿½ float animation -- */
             const statPills = document.querySelectorAll('.hero-stat-pill');
             statPills.forEach((pill, i) => {
                 pill.classList.add(['hero-float', 'hero-float-2', 'hero-float-3'][i % 3]);
             });
 
-            /* -- 10. Section headings — slide-up on enter -- */
+            /* -- 10. Section headings ï¿½ slide-up on enter -- */
             document.querySelectorAll('section h2, section .text-center > span').forEach((el, i) => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(24px)';
@@ -2403,9 +2389,85 @@ _Please review and confirm the subscription._`;
             });
 
         })();
+
+        // ---- FETCH DYNAMIC FAQS ----
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadFaqs = async (apiUrl, containerId, containerBgClass, iconBgClass) => {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+
+                try {
+                    const response = await fetch(apiUrl);
+                    const data = await response.json();
+
+                    if (data.status === 'success' && data.data.faqs.length > 0) {
+                        container.innerHTML = ''; // Clear loading text
+                        data.data.faqs.forEach(faq => {
+                            const itemHtml = `
+                            <div class="faq-item ${containerBgClass} border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
+                                <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
+                                    <span class="text-lg font-bold text-slate-900">${faq.question}</span>
+                                    <div class="faq-icon shrink-0 w-8 h-8 rounded-full ${iconBgClass} text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
+                                        <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                                    </div>
+                                </button>
+                                <div class="faq-content hidden px-6 pb-6 text-slate-600 animate-in fade-in slide-in-from-top-2 duration-300 leading-relaxed whitespace-pre-line">
+                                    <p>${faq.answer}</p>
+                                </div>
+                            </div>`;
+                            container.insertAdjacentHTML('beforeend', itemHtml);
+                        });
+
+                        // Re-initialize lucide icons for the newly injected HTML
+                        if (typeof lucide !== 'undefined') {
+                            lucide.createIcons();
+                        }
+
+                        // Attach accordion toggle logic to the new items
+                        const toggles = container.querySelectorAll('.faq-toggle');
+                        toggles.forEach(toggle => {
+                            toggle.addEventListener('click', () => {
+                                const content = toggle.nextElementSibling;
+                                const icon = toggle.querySelector('.faq-icon');
+                                const item = toggle.parentElement;
+
+                                // Close all others in the same container
+                                container.querySelectorAll('.faq-content').forEach(c => {
+                                    if (c !== content) c.classList.add('hidden');
+                                });
+                                container.querySelectorAll('.faq-icon').forEach(i => {
+                                    if (i !== icon) {
+                                        i.classList.remove('rotate-180', 'bg-red-600', 'text-white');
+                                        i.classList.add('text-red-600');
+                                    }
+                                });
+                                container.querySelectorAll('.faq-item').forEach(i => {
+                                    if (i !== item) i.classList.remove('shadow-md', 'border-red-100');
+                                });
+                                // Toggle current
+                                content.classList.toggle('hidden');
+                                icon.classList.toggle('rotate-180');
+                                icon.classList.toggle('bg-red-600');
+                                icon.classList.toggle('text-red-600');
+                                icon.classList.toggle('text-white');
+                                item.classList.toggle('shadow-md');
+                                item.classList.toggle('border-red-100');
+                            });
+                        });
+                    }
+                } catch (err) {
+                    console.error("Failed to load FAQs for " + containerId + ":", err);
+                }
+            };
+
+            // Call for AMC FAQs
+            loadFaqs('http://localhost:5000/api/v1/misc/faqs/amc', 'amc-faq-accordion-container', 'bg-white', 'bg-slate-50');
+            // Call for Main FAQs
+            loadFaqs('http://localhost:5000/api/v1/misc/faqs/main', 'main-faq-accordion-container', 'bg-slate-50', 'bg-white');
+        });
     </script>
 
-    <!-- Standalone AMC Packages Loader — independent of all other JS scopes -->
+    <!-- Standalone AMC Packages Loader ï¿½ independent of all other JS scopes -->
     <script>
         (function () {
             const API_URL = 'http://localhost:5000/api/v1/misc/amc-packages';
@@ -2433,9 +2495,9 @@ _Please review and confirm the subscription._`;
                     }
 
                     const wrapperClasses = isPopular
+
                         ? "w-full md:w-[400px] bg-gradient-to-br from-red-600 to-red-700 rounded-[2rem] p-8 md:p-10 border border-red-500 shadow-xl shadow-red-600/20 hover:shadow-2xl hover:shadow-red-600/30 transition-all duration-300 relative group flex flex-col h-full animate-fade-in-up"
                         : "w-full md:w-[400px] bg-white rounded-[2rem] p-8 md:p-10 border border-slate-200 shadow-xl hover:shadow-2xl hover:border-red-200 transition-all duration-300 relative group flex flex-col h-full animate-fade-in-up";
-
                     const titleClasses = isPopular ? "text-2xl font-bold text-white mb-2" : "text-2xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors";
                     const priceValueClasses = isPopular ? "text-5xl font-extrabold text-white" : "text-5xl font-extrabold text-slate-900";
                     const priceLabelClasses = isPopular ? "text-red-200 font-medium text-xl capitalize" : "text-slate-500 font-medium text-xl capitalize";
@@ -2454,24 +2516,24 @@ _Please review and confirm the subscription._`;
                         </li>`;
                     }).join('');
 
-                    const cardDiv = document.createElement('div');
+
+                    const cardDiv = document.createElement("div");
                     cardDiv.className = wrapperClasses;
-                    cardDiv.style.animationDelay = (index * 0.1) + 's';
+                    cardDiv.style.animationDelay = (index * 0.15) + "s"; cardDiv.style.animationFillMode = "both";
                     cardDiv.innerHTML = `
                         ${decorationHtml}
                         <div class="mb-8 relative z-10">
                             <h3 class="${titleClasses}">${pkg.title}</h3>
+                            <p class="text-sm ${isPopular ? 'text-red-100' : 'text-slate-500'} mt-2">${pkg.description}</p>
                             <div class="flex items-baseline gap-1 mt-4">
-                                <span class="${priceValueClasses}">${pkg.price}</span>
-                                <span class="${priceLabelClasses}">/${pkg.billingCycle}</span>
+                                <span class="${priceValueClasses}">&#8377;${pkg.price}</span><span class="${priceLabelClasses}">/year</span>
                             </div>
                         </div>
                         <ul class="flex flex-col gap-4 mb-10 flex-1 relative z-10">${features}</ul>
-                        <button onclick="window.openAmcModal('${pkg._id}')"
-                            class="w-full inline-flex items-center justify-center h-14 rounded-xl bg-yellow-400 text-yellow-900 font-bold text-lg hover:bg-yellow-500 shadow-lg relative z-10 transition-all duration-300 mt-auto">
-                            Book Service
-                        </button>`;
+                        <button onclick="window.openAmcModal('${pkg._id}')" class="w-full inline-flex items-center justify-center h-14 rounded-xl bg-yellow-400 text-yellow-900 font-bold text-lg hover:bg-yellow-500 shadow-lg relative z-10 transition-all duration-300 mt-auto">Book Service</button>`;
                     container.appendChild(cardDiv);
+
+
                 });
                 if (window.lucide) window.lucide.createIcons();
             }
@@ -2507,6 +2569,134 @@ _Please review and confirm the subscription._`;
         })();
     </script>
 
+    <!-- Dynamic Website Configurations Hub -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const response = await fetch("http://localhost:5000/api/v1/misc/website-config");
+                const data = await response.json();
+                const config = data?.data?.config;
+                if (!config) return;
+
+                const updateHref = (selector, hrefValue) => {
+                    document.querySelectorAll(selector).forEach(el => { if (hrefValue) el.href = hrefValue; });
+                };
+                const updateText = (selector, textValue) => {
+                    document.querySelectorAll(selector).forEach(el => { el.innerHTML = textValue; });
+                };
+
+                if (config.contact) {
+                    updateText(".dynamic-phone-text", config.contact.phone);
+                    updateHref(".dynamic-phone-href", `tel:${config.contact.phone}`);
+                    updateText(".dynamic-email-text", config.contact.email);
+                    updateText(".dynamic-address-text", config.contact.address);
+                }
+
+                if (config.global) {
+                    if (config.global.footerDescription) updateText(".dynamic-footer-description", config.global.footerDescription);
+                    if (config.global.copyrightText) updateText(".dynamic-copyright-text", config.global.copyrightText);
+
+                    if (config.global.stats?.length) {
+                        const statsContainer = document.getElementById("dynamic-trust-bar");
+                        if (statsContainer) {
+                            statsContainer.innerHTML = config.global.stats.map((stat, i) => `
+                                ${i > 0 ? '<div class="hidden sm:block w-px bg-slate-200"></div>' : ''}
+                                <div>
+                                    <p class="text-3xl font-black text-red-600">${stat.value}${stat.suffix}</p>
+                                    <p class="text-sm text-slate-500 mt-1">${stat.label}</p>
+                                </div>
+                            `).join('');
+                        }
+                    }
+                }
+
+                if (config.amcPage?.seo) {
+                    if (config.amcPage.seo.title) document.title = config.amcPage.seo.title;
+                    if (config.amcPage.seo.description) {
+                        const metaDesc = document.querySelector('meta[name="description"]');
+                        if (metaDesc) metaDesc.content = config.amcPage.seo.description;
+                    }
+                    if (config.amcPage.seo.keywords) {
+                        const metaKeywords = document.querySelector('meta[name="keywords"]');
+                        if (metaKeywords) metaKeywords.content = config.amcPage.seo.keywords;
+                    }
+                }
+
+                if (config.amcPage?.reviews?.length) {
+                    const reviewsContainer = document.getElementById("dynamic-reviews-grid");
+                    if (reviewsContainer) {
+                        reviewsContainer.innerHTML = config.amcPage.reviews.map((rev, i) => {
+                            const stars = Array(5).fill(0).map((_, idx) => {
+                                const isFull = (idx + 1) <= rev.rating;
+                                return `<i data-lucide="star" class="w-4 h-4 ${isFull ? 'text-amber-400 fill-amber-400' : 'text-slate-300'}"></i>`;
+                            }).join('');
+
+                            const avatarLetter = rev.user_name ? rev.user_name.charAt(0).toUpperCase() : 'S';
+
+                            return `
+                                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col gap-4 sr sr-up" style="animation-delay: ${0.1 * i}s">
+                                    <div class="flex gap-1">
+                                        ${stars}
+                                    </div>
+                                    <p class="text-slate-600 leading-relaxed text-sm">"${rev.message}"</p>
+                                    <div class="flex items-center gap-3 mt-auto pt-4 border-t border-slate-100">
+                                        <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center font-bold text-red-600 text-sm">
+                                            ${avatarLetter}
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-slate-900 text-sm">${rev.user_name}</p>
+                                            <p class="text-xs text-slate-400">${rev.user_id}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    }
+                }
+
+                if (config.socials) {
+                    updateHref(".dynamic-facebook", config.socials.facebook);
+                    updateHref(".dynamic-instagram", config.socials.instagram);
+                    updateHref(".dynamic-linkedin", config.socials.linkedin);
+                    updateHref(".dynamic-youtube", config.socials.youtube);
+                }
+                if (config.appLinks?.linktree) updateHref(".dynamic-app-link", config.appLinks.linktree);
+
+                if (config.amcPage) {
+                    const amcHeroTitle = document.getElementById("dynamic-amc-hero-title");
+                    if (amcHeroTitle && config.amcPage.heroTitle) amcHeroTitle.innerHTML = config.amcPage.heroTitle;
+
+                    const amcHeroSubtitle = document.getElementById("dynamic-amc-hero-subtitle");
+                    if (amcHeroSubtitle && config.amcPage.heroSubtitle) amcHeroSubtitle.innerHTML = config.amcPage.heroSubtitle;
+
+                    const benefitsContainer = document.getElementById("dynamic-benefits-container");
+                    if (benefitsContainer && config.amcPage.benefits?.length) {
+                        benefitsContainer.innerHTML = config.amcPage.benefits.map((bn, i) => `
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center shrink-0">
+                                    <i data-lucide="${bn.icon}" class="w-5 h-5 text-red-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">${bn.title}</h4>
+                                    <p class="text-sm text-slate-400 mt-1">${bn.description}</p>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+                if (window.lucide) window.lucide.createIcons();
+
+                // Re-trigger Scroll Reveal for new elements
+                if (typeof observeNewSR === 'function') {
+                    observeNewSR();
+                } else {
+                    document.querySelectorAll('.sr:not(.in)').forEach(el => el.classList.add('in'));
+                }
+            } catch (err) {
+                console.error("Failed to load website configuration", err);
+            }
+        });
+    </script>
 </body>
 
 

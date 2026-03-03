@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servall Landing Page</title>
+    <title id="dynamic-seo-title">Servall - Premium Bike Services</title>
+    <meta id="dynamic-seo-description" name="description" content="Affordable and reliable bike services.">
+    <meta id="dynamic-seo-keywords" name="keywords" content="bike service, repair, servall">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -101,7 +103,7 @@
             <div class="hidden lg:flex items-center space-x-6">
                 <!-- App Download Button -->
                 <a href="https://linktr.ee/ServallCRE" target="_blank"
-                    class="group relative inline-flex items-center justify-center h-10 px-4 py-2 font-medium text-white transition-all duration-300 rounded-full bg-slate-800 hover:bg-slate-700 hover:shadow-lg hover:shadow-slate-800/20 overflow-hidden border border-slate-700">
+                    class="dynamic-app-link group relative inline-flex items-center justify-center h-10 px-4 py-2 font-medium text-white transition-all duration-300 rounded-full bg-slate-800 hover:bg-slate-700 hover:shadow-lg hover:shadow-slate-800/20 overflow-hidden border border-slate-700">
                     <span class="relative z-10 flex items-center gap-2 text-sm">
                         <i data-lucide="smartphone" class="w-4 h-4 text-red-500 group-hover:animate-bounce"></i>
                         Get App
@@ -117,10 +119,10 @@
                     <i data-lucide="phone" class="w-[18px] h-[18px]"></i>
                     <span>+91 900 500 9500</span>
                 </button>
-                <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+                <!-- <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
                     class="inline-flex items-center justify-center rounded-xl text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-12 px-8 py-3 bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/20">
                     Book Now
-                </button>
+                </button> -->
             </div>
 
             <!-- Mobile Toggle -->
@@ -139,7 +141,7 @@
             <a href="#reviews"
                 class="text-lg font-medium text-slate-700 py-2 border-b border-slate-50 mobile-link">Reviews</a>
             <a href="https://linktr.ee/ServallCRE" target="_blank"
-                class="flex items-center justify-between text-lg font-bold text-slate-900 py-2 border-b border-slate-50 mobile-link group">
+                class="dynamic-app-link flex items-center justify-between text-lg font-bold text-slate-900 py-2 border-b border-slate-50 mobile-link group">
                 <span class="flex items-center gap-2">
                     <i data-lucide="smartphone" class="w-5 h-5 text-red-600"></i>
                     Download App
@@ -184,7 +186,7 @@
         <div
             class="container mx-auto px-4 md:px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center w-full">
 
-            <!-- â”€â”€ COL 1: Text Content â”€â”€ -->
+            <!-- -- COL 1: Text Content -- -->
             <div class="flex flex-col gap-5 animate-fade-in-left">
                 <!-- Live badge -->
                 <div
@@ -198,7 +200,7 @@
                         Experts</span>
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl xl:text-6xl font-bold text-white leading-[1.1]">
+                <h1 id="dynamic-hero-title" class="text-4xl sm:text-5xl xl:text-6xl font-bold text-white leading-[1.1]">
                     Your Ultimate <br />
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Two
                         Wheeler</span> <br />
@@ -244,7 +246,8 @@
                     </div>
                     <div>
                         <p class="text-xs text-slate-400 font-medium">Have a query?</p>
-                        <p class="text-lg font-bold text-white tracking-wide">+91 900 500 9500</p>
+                        <p id="dynamic-herophone" class="text-lg font-bold text-white tracking-wide">+91 900 500 9500
+                        </p>
                     </div>
                 </div>
             </div>
@@ -505,7 +508,7 @@
             }
         }
 
-        /* === HERO 3-COLUMN GRID (explicit â€” not relying on Tailwind JIT) === */
+        /* === HERO 3-COLUMN GRID (explicit — not relying on Tailwind JIT) === */
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -558,173 +561,31 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Service 1 -->
-                <div
-                    class="group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:-translate-y-2">
-                    <div
-                        class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-blue-500">
-                        <i data-lucide="wrench" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
-                        General Services
-                    </h3>
-                    <p class="text-sm text-slate-600 mb-4 flex-1">
-                        Complete checkup & oil change
-                    </p>
-                    <div
-                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center absolute bottom-6 right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-red-600"></i>
-                    </div>
-                </div>
+            <div id="dynamic-services-container" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                <!-- Service 2 -->
-                <div
-                    class="group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:-translate-y-2">
-                    <div
-                        class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-orange-500">
-                        <i data-lucide="car" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
-                        Accidental Repair
-                    </h3>
-                    <p class="text-sm text-slate-600 mb-4 flex-1">
-                        Dent paint & body work
-                    </p>
-                    <div
-                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center absolute bottom-6 right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-red-600"></i>
-                    </div>
-                </div>
+                <!-- Services will be dynamically injected here via config-manager.js -->
 
-                <!-- Service 3 -->
-                <div
-                    class="group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:-translate-y-2">
-                    <div
-                        class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-green-500">
-                        <i data-lucide="package" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
-                        Spare Parts
-                    </h3>
-                    <p class="text-sm text-slate-600 mb-4 flex-1">
-                        100% genuine parts
-                    </p>
-                    <div
-                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center absolute bottom-6 right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-red-600"></i>
-                    </div>
-                </div>
-
-                <!-- Service 4 -->
-                <div
-                    class="group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:-translate-y-2">
-                    <div
-                        class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-purple-500">
-                        <i data-lucide="palette" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
-                        Customized Services
-                    </h3>
-                    <p class="text-sm text-slate-600 mb-4 flex-1">
-                        Modifications & upgrades
-                    </p>
-                    <div
-                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center absolute bottom-6 right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-red-600"></i>
-                    </div>
-                </div>
-
-                <!-- Service 5 -->
-                <div
-                    class="group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:-translate-y-2">
-                    <div
-                        class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-cyan-500">
-                        <i data-lucide="shield" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
-                        Insurance Services
-                    </h3>
-                    <p class="text-sm text-slate-600 mb-4 flex-1">
-                        Claims & renewals assistance
-                    </p>
-                    <div
-                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center absolute bottom-6 right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-red-600"></i>
-                    </div>
-                </div>
-
-                <!-- Service 6 -->
-                <div
-                    class="group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:-translate-y-2">
-                    <div
-                        class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-red-500">
-                        <i data-lucide="settings" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
-                        Engine Repairs
-                    </h3>
-                    <p class="text-sm text-slate-600 mb-4 flex-1">
-                        Overhaul & fine tuning
-                    </p>
-                    <div
-                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center absolute bottom-6 right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-red-600"></i>
-                    </div>
-                </div>
-
-                <!-- Service 7 -->
-                <div
-                    class="group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:-translate-y-2">
-                    <div
-                        class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-emerald-500">
-                        <i data-lucide="zap" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
-                        EV Maintenance
-                    </h3>
-                    <p class="text-sm text-slate-600 mb-4 flex-1">
-                        Battery & motor health
-                    </p>
-                    <div
-                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center absolute bottom-6 right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-red-600"></i>
-                    </div>
-                </div>
-
-                <!-- Service 8 -->
-                <div
-                    class="group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:-translate-y-2">
-                    <div
-                        class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-pink-500">
-                        <i data-lucide="sparkles" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
-                        Smart Accessories
-                    </h3>
-                    <p class="text-sm text-slate-600 mb-4 flex-1">
-                        Lights, locks & more
-                    </p>
-                    <div
-                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center absolute bottom-6 right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-red-600"></i>
-                    </div>
-                </div>
             </div>
-        </div>
+
     </section>
 
-    <!-- Why Choose Servall Section â€” Light Theme -->
+    <!-- Why Choose Servall Section — Light Theme -->
     <!-- Trust Marquee Strip -->
-    <div class="bg-white border-y border-slate-100 py-4 overflow-hidden">
+    <div class="relative bg-slate-900 py-5 overflow-hidden">
+        <!-- Left fade mask -->
+        <div class="pointer-events-none absolute left-0 top-0 h-full w-24 z-10"
+            style="background:linear-gradient(to right,#0f172a,transparent)"></div>
+        <!-- Right fade mask -->
+        <div class="pointer-events-none absolute right-0 top-0 h-full w-24 z-10"
+            style="background:linear-gradient(to left,#0f172a,transparent)"></div>
         <div class="marquee-track" id="marquee-track"></div>
         <script>
             (function () {
                 const items = [
                     ['shield-check', '#ef4444', 'ISO Certified Workshops'],
-                    ['star', '#eab308', '4.8★ Google Rating'],
+                    ['star', '#eab308', '4.8\u2605 Google Rating'],
                     ['users', '#ef4444', '2.5 Lakh+ Happy Customers'],
-                    ['truck', '#14b8a6', 'Free Pickup & Drop'],
+                    ['truck', '#14b8a6', 'Pickup & Drop'],
                     ['package-check', '#a855f7', '100% Genuine Spares'],
                     ['award', '#22c55e', '10 Years of Service'],
                     ['map-pin', '#3b82f6', '38+ Outlets Across India'],
@@ -735,13 +596,13 @@
                 const track = document.getElementById('marquee-track');
                 if (!track) return;
                 let html = '';
-                for (let pass = 0; pass < 2; pass++) {
+                for (let pass = 0; pass < 3; pass++) {
                     items.forEach(([icon, color, label]) => {
-                        html += `<span class="inline-flex items-center gap-2 px-8 whitespace-nowrap text-sm font-semibold text-slate-500"><i data-lucide="${icon}" style="color:${color};width:16px;height:16px;flex-shrink:0;"></i>${label}</span><span class="mx-2 select-none" style="color:#e2e8f0">•</span>`;
+                        html += `<div class='group inline-flex items-center gap-3 mx-2.5 px-5 py-2.5 rounded-full border cursor-default whitespace-nowrap transition-all duration-300 hover:scale-105' style='border-color:${color}30;background:${color}10;'><div class='w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300' style='background:${color}22;'><i data-lucide='${icon}' style='color:${color};width:15px;height:15px;display:block;'></i></div><span class='text-sm font-semibold text-slate-200 group-hover:text-white transition-colors'>${label}</span></div>`;
                     });
                 }
                 track.innerHTML = html;
-                if (window.lucide) window.lucide.createIcons();
+                setTimeout(() => { if (window.lucide) window.lucide.createIcons(); }, 0);
             })();
         </script>
     </div>
@@ -764,19 +625,19 @@
                     The Servall <span class="text-red-600">Difference</span>
                 </h2>
                 <p class="text-lg text-slate-500 leading-relaxed">
-                    We're not just a service center â€” we're your two-wheeler's best friend. Here's what sets us apart.
+                    We're not just a service center — we're your two-wheeler's best friend. Here's what sets us apart.
                 </p>
             </div>
 
             <!-- 6-Card Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
 
                 <!-- Card 1: Expert Technician -->
                 <div class="why-card why-reveal group" data-delay="0.05">
                     <div
                         class="relative overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
                         <!-- Image -->
-                        <div class="relative h-48 overflow-hidden">
+                        <div class="relative h-32 sm:h-40 md:h-44 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
                                 alt="Expert Technician"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -785,16 +646,17 @@
                             </div>
                             <!-- Icon badge -->
                             <div
-                                class="absolute bottom-4 left-4 w-12 h-12 rounded-2xl bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-600/30">
+                                class="absolute bottom-3 left-3 w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-600/30">
                                 <i data-lucide="user-check" class="w-6 h-6"></i>
                             </div>
                         </div>
                         <!-- Content -->
                         <div class="p-6 flex-1 flex flex-col">
                             <h3
-                                class="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                                class="text-sm sm:text-base md:text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
                                 Expert Technician</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed flex-1">Certified and trained professionals
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed flex-1">Certified and trained
+                                professionals
                                 who specialize in all major two-wheeler brands. Every job done right, the first time.
                             </p>
                             <div class="flex flex-wrap gap-2 mt-4">
@@ -812,7 +674,7 @@
                 <div class="why-card why-reveal group" data-delay="0.1">
                     <div
                         class="relative overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
-                        <div class="relative h-48 overflow-hidden">
+                        <div class="relative h-32 sm:h-40 md:h-44 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=600&q=80"
                                 alt="Advanced Tools"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -820,15 +682,16 @@
                                 class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-80">
                             </div>
                             <div
-                                class="absolute bottom-4 left-4 w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-600/30">
+                                class="absolute bottom-3 left-3 w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-600/30">
                                 <i data-lucide="settings-2" class="w-6 h-6"></i>
                             </div>
                         </div>
                         <div class="p-6 flex-1 flex flex-col">
                             <h3
-                                class="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                                class="text-sm sm:text-base md:text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
                                 Advanced Tools & Equipment</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed flex-1">State-of-the-art diagnostic
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed flex-1">State-of-the-art
+                                diagnostic
                                 machines and precision tools ensure every repair meets OEM standards.</p>
                             <div class="flex flex-wrap gap-2 mt-4">
                                 <span
@@ -845,7 +708,7 @@
                 <div class="why-card why-reveal group" data-delay="0.15">
                     <div
                         class="relative overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
-                        <div class="relative h-48 overflow-hidden">
+                        <div class="relative h-32 sm:h-40 md:h-44 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
                                 alt="Service Advisor"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -853,16 +716,17 @@
                                 class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-80">
                             </div>
                             <div
-                                class="absolute bottom-4 left-4 w-12 h-12 rounded-2xl bg-green-600 text-white flex items-center justify-center shadow-lg shadow-green-600/30">
+                                class="absolute bottom-3 left-3 w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-green-600 text-white flex items-center justify-center shadow-lg shadow-green-600/30">
                                 <i data-lucide="headphones" class="w-6 h-6"></i>
                             </div>
                         </div>
                         <div class="p-6 flex-1 flex flex-col">
                             <h3
-                                class="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                                class="text-sm sm:text-base md:text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
                                 Dedicated Service Advisor</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed flex-1">A personal advisor walks you
-                                through every step â€” from diagnosis to delivery â€” with full transparency.</p>
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed flex-1">A personal advisor walks
+                                you
+                                through every step — from diagnosis to delivery — with full transparency.</p>
                             <div class="flex flex-wrap gap-2 mt-4">
                                 <span
                                     class="text-xs font-semibold bg-green-50 text-green-600 border border-green-100 rounded-full px-3 py-1">Transparent</span>
@@ -878,7 +742,7 @@
                 <div class="why-card why-reveal group" data-delay="0.2">
                     <div
                         class="relative overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
-                        <div class="relative h-48 overflow-hidden">
+                        <div class="relative h-32 sm:h-40 md:h-44 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=80"
                                 alt="Annual Maintenance"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -886,15 +750,16 @@
                                 class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-80">
                             </div>
                             <div
-                                class="absolute bottom-4 left-4 w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/30">
+                                class="absolute bottom-3 left-3 w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/30">
                                 <i data-lucide="calendar-check" class="w-6 h-6"></i>
                             </div>
                         </div>
                         <div class="p-6 flex-1 flex flex-col">
                             <h3
-                                class="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                                class="text-sm sm:text-base md:text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
                                 Annual Maintenance Contract</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed flex-1">Subscribe to our AMC plan and enjoy
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed flex-1">Subscribe to our AMC
+                                plan and enjoy
                                 hassle-free scheduled servicing, priority slots, and exclusive member discounts.</p>
                             <div class="flex flex-wrap gap-2 mt-4">
                                 <span
@@ -912,7 +777,7 @@
                 <div class="why-card why-reveal group" data-delay="0.25">
                     <div
                         class="relative overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
-                        <div class="relative h-48 overflow-hidden">
+                        <div class="relative h-32 sm:h-40 md:h-44 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1558981285-6f0c94958bb6?w=600&q=80"
                                 alt="High Quality Spares"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -920,16 +785,17 @@
                                 class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-80">
                             </div>
                             <div
-                                class="absolute bottom-4 left-4 w-12 h-12 rounded-2xl bg-purple-600 text-white flex items-center justify-center shadow-lg shadow-purple-600/30">
+                                class="absolute bottom-3 left-3 w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-purple-600 text-white flex items-center justify-center shadow-lg shadow-purple-600/30">
                                 <i data-lucide="package-check" class="w-6 h-6"></i>
                             </div>
                         </div>
                         <div class="p-6 flex-1 flex flex-col">
                             <h3
-                                class="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                                class="text-sm sm:text-base md:text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
                                 High Quality Spares</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed flex-1">We use only genuine OEM and
-                                manufacturer-approved spare parts â€” no counterfeits, ever. Your bike deserves the
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed flex-1">We use only genuine OEM
+                                and
+                                manufacturer-approved spare parts — no counterfeits, ever. Your bike deserves the
                                 best.
                             </p>
                             <div class="flex flex-wrap gap-2 mt-4">
@@ -948,7 +814,7 @@
                 <div class="why-card why-reveal group" data-delay="0.3">
                     <div
                         class="relative overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
-                        <div class="relative h-48 overflow-hidden">
+                        <div class="relative h-32 sm:h-40 md:h-44 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1609520778383-f2b6b9e61b26?w=600&q=80"
                                 alt="Free Pickup and Drop"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -956,15 +822,16 @@
                                 class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-80">
                             </div>
                             <div
-                                class="absolute bottom-4 left-4 w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center shadow-lg shadow-teal-600/30">
+                                class="absolute bottom-3 left-3 w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center shadow-lg shadow-teal-600/30">
                                 <i data-lucide="truck" class="w-6 h-6"></i>
                             </div>
                         </div>
                         <div class="p-6 flex-1 flex flex-col">
                             <h3
-                                class="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                                class="text-sm sm:text-base md:text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
                                 Free Pick up & Drop</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed flex-1">Don't ride to us â€” we come to
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed flex-1">Don't ride to us — we
+                                come to
                                 you.
                                 Free doorstep pickup and drop-off so your service is completely hassle-free.</p>
                             <div class="flex flex-wrap gap-2 mt-4">
@@ -1059,82 +926,90 @@
             </div>
 
             <!-- Stats Grid -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div id="dynamic-impact-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-6">
 
                 <!-- 2.5 Lakh+ Customers -->
                 <div
-                    class="sn-card group relative bg-white rounded-3xl p-8 text-center shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 cursor-default">
+                    class="sn-card group relative bg-white rounded-3xl p-4 sm:p-6 md:p-8 text-center shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 cursor-default">
                     <div class="sn-card-glow"></div>
                     <div class="relative z-10">
                         <div
                             class="w-16 h-16 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mx-auto mb-5 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm">
                             <i data-lucide="users" class="w-8 h-8"></i>
                         </div>
-                        <div class="text-4xl xl:text-5xl font-black text-slate-900 mb-1 leading-none tracking-tight">
+                        <div
+                            class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-slate-900 mb-1 leading-none tracking-tight">
                             <span data-count="2.5" data-dec="1" class="tabular-nums">0</span><span class="text-red-600">
                                 Lakh+</span>
                         </div>
-                        <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mt-2">Happy Customers</p>
+                        <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-widest mt-2">Happy
+                            Customers</p>
                     </div>
                 </div>
 
                 <!-- 4 States -->
                 <div
-                    class="sn-card group relative bg-white rounded-3xl p-8 text-center shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 cursor-default">
+                    class="sn-card group relative bg-white rounded-3xl p-4 sm:p-6 md:p-8 text-center shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 cursor-default">
                     <div class="sn-card-glow"></div>
                     <div class="relative z-10">
                         <div
                             class="w-16 h-16 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mx-auto mb-5 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm">
                             <i data-lucide="map" class="w-8 h-8"></i>
                         </div>
-                        <div class="text-4xl xl:text-5xl font-black text-slate-900 mb-1 leading-none tracking-tight">
+                        <div
+                            class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-slate-900 mb-1 leading-none tracking-tight">
                             <span data-count="4" class="tabular-nums">0</span><span
                                 class="text-orange-500 text-2xl xl:text-3xl"> States</span>
                         </div>
-                        <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mt-2">Pan-India Presence
+                        <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-widest mt-2">Pan-India
+                            Presence
                         </p>
                     </div>
                 </div>
 
                 <!-- 38+ Outlets -->
                 <div
-                    class="sn-card group relative bg-white rounded-3xl p-8 text-center shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 cursor-default">
+                    class="sn-card group relative bg-white rounded-3xl p-4 sm:p-6 md:p-8 text-center shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 cursor-default">
                     <div class="sn-card-glow"></div>
                     <div class="relative z-10">
                         <div
                             class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-5 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
                             <i data-lucide="store" class="w-8 h-8"></i>
                         </div>
-                        <div class="text-4xl xl:text-5xl font-black text-slate-900 mb-1 leading-none tracking-tight">
+                        <div
+                            class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-slate-900 mb-1 leading-none tracking-tight">
                             <span data-count="38" class="tabular-nums">0</span><span
                                 class="text-blue-600 text-2xl xl:text-3xl">+</span>
                         </div>
-                        <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mt-2">Service Outlets</p>
+                        <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-widest mt-2">Service
+                            Outlets</p>
                     </div>
                 </div>
 
                 <!-- 10 Years -->
                 <div
-                    class="sn-card group relative bg-white rounded-3xl p-8 text-center shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 cursor-default">
+                    class="sn-card group relative bg-white rounded-3xl p-4 sm:p-6 md:p-8 text-center shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 cursor-default">
                     <div class="sn-card-glow"></div>
                     <div class="relative z-10">
                         <div
                             class="w-16 h-16 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center mx-auto mb-5 group-hover:bg-green-600 group-hover:text-white transition-all duration-300 shadow-sm">
                             <i data-lucide="award" class="w-8 h-8"></i>
                         </div>
-                        <div class="text-4xl xl:text-5xl font-black text-slate-900 mb-1 leading-none tracking-tight">
+                        <div
+                            class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-slate-900 mb-1 leading-none tracking-tight">
                             <span data-count="10" class="tabular-nums">0</span><span
                                 class="text-green-600 text-2xl xl:text-3xl"> Yrs</span>
                         </div>
-                        <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mt-2">Of Trusted Service
+                        <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-widest mt-2">Of Trusted
+                            Service
                         </p>
                     </div>
                 </div>
             </div>
 
             <!-- Bottom image strip -->
-            <div class="mt-16 grid grid-cols-3 gap-4 rounded-3xl overflow-hidden" style="height:200px">
-                <div class="relative overflow-hidden rounded-2xl">
+            <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-3xl overflow-hidden">
+                <div class="relative overflow-hidden rounded-2xl h-40 sm:h-56">
                     <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80"
                         alt="Mechanic at work"
                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
@@ -1142,14 +1017,14 @@
                     <p class="absolute bottom-3 left-3 text-white text-xs font-bold tracking-wide">Expert Technicians
                     </p>
                 </div>
-                <div class="relative overflow-hidden rounded-2xl">
+                <div class="relative overflow-hidden rounded-2xl h-40 sm:h-56">
                     <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=500&q=80"
                         alt="Bike service"
                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                     <p class="absolute bottom-3 left-3 text-white text-xs font-bold tracking-wide">Premium Service</p>
                 </div>
-                <div class="relative overflow-hidden rounded-2xl">
+                <div class="relative overflow-hidden rounded-2xl h-40 sm:h-56">
                     <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=500&q=80" alt="Motorcycle"
                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
@@ -1179,7 +1054,7 @@
     </section>
 
 
-    <!-- AMC Packages Section — MOVED TO amc-landing-page.html -->
+    <!-- AMC Packages Section ? MOVED TO amc-landing-page.html -->
     <section id="amc-packages" class="hidden py-20 bg-slate-50 relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6 relative z-10">
             <div class="text-center max-w-2xl mx-auto mb-16">
@@ -1310,147 +1185,8 @@
                 </p>
             </div>
 
-            <div class="max-w-3xl mx-auto space-y-4">
-                <!-- FAQ Item 1 -->
-                <div
-                    class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button
-                        class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                        <span class="text-lg font-bold text-slate-900">What is Servall?</span>
-                        <div
-                            class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="faq-content hidden px-6 pb-6 text-slate-600 animate-in fade-in slide-in-from-top-2 duration-300 leading-relaxed">
-                        <p>Servall is a Multi Brand 2 Wheeler Workshop Chain providing its services &amp; Unique User
-                            Experience through its Franchise Network.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div
-                    class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button
-                        class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                        <span class="text-lg font-bold text-slate-900">Which Vehicles are you servicing right
-                            now?</span>
-                        <div
-                            class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="faq-content hidden px-6 pb-6 text-slate-600 animate-in fade-in slide-in-from-top-2 duration-300 leading-relaxed">
-                        <p>We are happily servicing all major brands of two-wheelers including Honda, TVS, Bajaj, Hero,
-                            Yamaha, Royal Enfield, Suzuki, and more. Our multi-brand approach ensures expert care for
-                            any bike you ride.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div
-                    class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button
-                        class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                        <span class="text-lg font-bold text-slate-900">How are your services different from other
-                            Garages?</span>
-                        <div
-                            class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="faq-content hidden px-6 pb-6 text-slate-600 animate-in fade-in slide-in-from-top-2 duration-300 leading-relaxed">
-                        <p class="mb-3">There is a huge difference between a Servall Workshop &amp; Local Garages. Some
-                            of the aspects that set us apart include:</p>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li>Fully equipped with the latest tools &amp; equipment for quality repairs.</li>
-                            <li>Customer-centric services: service booking app, pick-up &amp; drop, breakdown
-                                assistance, and service reminders.</li>
-                            <li>We maintain your complete vehicle service history.</li>
-                            <li>Assistance with warranty claims for batteries &amp; tires.</li>
-                            <li>Cultivated a culture of complete transparency in billing.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div
-                    class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button
-                        class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                        <span class="text-lg font-bold text-slate-900">What are additional Benefits if I choose your
-                            Services?</span>
-                        <div
-                            class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="faq-content hidden px-6 pb-6 text-slate-600 animate-in fade-in slide-in-from-top-2 duration-300 leading-relaxed">
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 list-none">
-                            <li class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div> Pick up &amp; Drop
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div> Breakdown Assistance
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div> Access to Wide Workshop Network
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div> Maintenance History Keep Up
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div> AMC &amp; Value for Money offers
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div> Clean &amp; Tidy Customer Lounge
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 5 -->
-                <div
-                    class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button
-                        class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                        <span class="text-lg font-bold text-slate-900">Are your Service Charges Expensive?</span>
-                        <div
-                            class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="faq-content hidden px-6 pb-6 text-slate-600 animate-in fade-in slide-in-from-top-2 duration-300 leading-relaxed">
-                        <p>Not at all! Our focus is on providing high-quality, transparent, and cost-effective services.
-                            We ensure maximum value for your money with no hidden costs. Our AMC packages provide even
-                            more savings for frequent riders.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 6 -->
-                <div
-                    class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button
-                        class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                        <span class="text-lg font-bold text-slate-900">What represents the Quality of Material in your
-                            Workshop?</span>
-                        <div
-                            class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="faq-content hidden px-6 pb-6 text-slate-600 animate-in fade-in slide-in-from-top-2 duration-300 leading-relaxed">
-                        <p>Quality is our priority. We exclusively use genuine OEM/OES spare parts and top-tier engine
-                            oils and consumables. This ensures the absolute best performance, safety, and longevity for
-                            your vehicle on the road.</p>
-                    </div>
-                </div>
+            <div class="max-w-3xl mx-auto space-y-4" id="faq-accordion-container">
+                <!-- FAQs will be dynamically loaded here by JavaScript -->
             </div>
         </div>
     </section>
@@ -1471,27 +1207,29 @@
                                     style="filter: brightness(0) invert(1);" />
                             </a>
                         </div>
-                        <p class="text-sm text-slate-500">Servall is a Multi Brand 2 Wheeler Workshop Chain providing
-                            Itâ€™s services & Unique User Experience through Itâ€™s Franchise Network.</p>
+                        <p class="text-sm text-slate-500 dynamic-footer-description">Servall is a Multi Brand 2 Wheeler
+                            Workshop Chain providing
+                            It's services & Unique User Experience through It's Franchise Network.</p>
                     </div>
                     <!-- <p class="text-slate-400 leading-relaxed text-sm">
-                        Servall is a Multi Brand 2 Wheeler Workshop Chain providing Itâ€™s services & Unique User
-                        Experience through Itâ€™s Franchise Network.
+                        Servall is a Multi Brand 2 Wheeler Workshop Chain providing It's services & Unique User Experience through It's Franchise Network.
                     </p> -->
                     <div class="flex gap-4">
-                        <a href="https://www.facebook.com/servall.india/" target="_blank"
+                        <a href="https://www.facebook.com/servall.india/" class="dynamic-facebook" target="_blank"
                             class="w-10 h-10 rounded-lg bg-white/5 hover:bg-red-600 flex items-center justify-center transition-colors">
                             <i data-lucide="facebook" class="w-4.5 h-4.5"></i>
                         </a>
-                        <a href="https://www.instagram.com/servall.india/" target="_blank"
+                        <a href="https://www.instagram.com/servall.india/" class="dynamic-instagram" target="_blank"
                             class="w-10 h-10 rounded-lg bg-white/5 hover:bg-red-600 flex items-center justify-center transition-colors">
                             <i data-lucide="instagram" class="w-4.5 h-4.5"></i>
                         </a>
-                        <a href="https://www.youtube.com/channel/UCL8s6_8nQ7G2jAyiYxMLm4g" target="_blank"
+                        <a href="https://www.youtube.com/channel/UCL8s6_8nQ7G2jAyiYxMLm4g" class="dynamic-youtube"
+                            target="_blank"
                             class="w-10 h-10 rounded-lg bg-white/5 hover:bg-red-600 flex items-center justify-center transition-colors">
                             <i data-lucide="youtube" class="w-4.5 h-4.5"></i>
                         </a>
-                        <a href="https://www.linkedin.com/company/servall-automotive/" target="_blank"
+                        <a href="https://www.linkedin.com/company/servall-automotive/" class="dynamic-linkedin"
+                            target="_blank"
                             class="w-10 h-10 rounded-lg bg-white/5 hover:bg-red-600 flex items-center justify-center transition-colors">
                             <i data-lucide="linkedin" class="w-4.5 h-4.5"></i>
                         </a>
@@ -1548,7 +1286,8 @@
                         <div class="flex items-start gap-4">
                             <i data-lucide="map-pin" class="text-red-500 shrink-0 mt-1 w-4.5 h-4.5"></i>
                             <div>
-                                <p>123, Servall HQ, Auto Market Road, Pune, Maharashtra - 411001</p>
+                                <p class="dynamic-address-text">123, Servall HQ, Auto Market Road, Pune, Maharashtra -
+                                    411001</p>
                             </div>
                         </div>
                     </div>
@@ -1559,7 +1298,7 @@
             <!-- Bottom Bar -->
             <div
                 class="border-t border-slate-800 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-                <p>Â© 2026 Servall Automotive Pvt. Ltd. All rights reserved.</p>
+                <p class="dynamic-copyright-text">© 2026 Servall Automotive Pvt. Ltd. All rights reserved.</p>
                 <div class="flex gap-6">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
@@ -2531,10 +2270,10 @@ _Please review and confirm the booking._`;
 
             // Stats Counter Animation
             const statsSection = document.getElementById('stats-section');
-            const counters = document.querySelectorAll('.counter-value');
-            let hasAnimated = false;
+            window.hasAnimated = false;
 
-            const animateCounters = () => {
+            window.animateCounters = () => {
+                const counters = document.querySelectorAll('.counter-value');
                 counters.forEach(counter => {
                     const target = parseFloat(counter.getAttribute('data-target'));
                     const duration = 2000;
@@ -2558,9 +2297,9 @@ _Please review and confirm the booking._`;
             };
 
             const observer = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting && !hasAnimated) {
-                    hasAnimated = true;
-                    animateCounters();
+                if (entries[0].isIntersecting && !window.hasAnimated) {
+                    window.hasAnimated = true;
+                    if (typeof window.animateCounters === 'function') window.animateCounters();
                 }
             }, { threshold: 0.5 });
 
@@ -3004,16 +2743,79 @@ _Please review and confirm the subscription._`;
             });
 
         });
+
+        // ---- FETCH DYNAMIC FAQS ----
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('faq-accordion-container');
+            if (!container) return;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/v1/misc/faqs/main');
+                const data = await response.json();
+
+                if (data.status === 'success' && data.data.faqs.length > 0) {
+                    container.innerHTML = ''; // Clear loading text
+                    data.data.faqs.forEach(faq => {
+                        const itemHtml = `
+                        <div class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300">
+                            <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
+                                <span class="text-lg font-bold text-slate-900">${faq.question}</span>
+                                <div class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                                </div>
+                            </button>
+                            <div class="faq-content hidden px-6 pb-6 text-slate-600 animate-in fade-in slide-in-from-top-2 duration-300 leading-relaxed whitespace-pre-line">
+                                <p>${faq.answer}</p>
+                            </div>
+                        </div>`;
+                        container.insertAdjacentHTML('beforeend', itemHtml);
+                    });
+
+                    // Re-initialize lucide icons for the newly injected HTML
+                    if (typeof lucide !== 'undefined') {
+                        lucide.createIcons();
+                    }
+
+                    // Attach accordion toggle logic to the new items
+                    const toggles = container.querySelectorAll('.faq-toggle');
+                    toggles.forEach(toggle => {
+                        toggle.addEventListener('click', () => {
+                            const content = toggle.nextElementSibling;
+                            const icon = toggle.querySelector('.faq-icon');
+                            const item = toggle.parentElement;
+
+                            // Close all others
+                            container.querySelectorAll('.faq-content').forEach(c => {
+                                if (c !== content) c.classList.add('hidden');
+                            });
+                            container.querySelectorAll('.faq-icon').forEach(i => {
+                                if (i !== icon) {
+                                    i.classList.remove('rotate-180', 'bg-red-600', 'text-white');
+                                    i.classList.add('text-red-500');
+                                }
+                            });
+                            container.querySelectorAll('.faq-item').forEach(i => {
+                                if (i !== item) i.classList.remove('shadow-md', 'border-red-100');
+                            });
+                            // Toggle current
+                            content.classList.toggle('hidden');
+                            icon.classList.toggle('rotate-180');
+                            icon.classList.toggle('bg-red-600');
+                            icon.classList.toggle('text-red-500');
+                            icon.classList.toggle('text-white');
+                            item.classList.toggle('shadow-md');
+                            item.classList.toggle('border-red-100');
+                        });
+                    });
+                }
+            } catch (err) {
+                console.error("Failed to load FAQs:", err);
+            }
+        });
     </script>
 
-    <!-- ═══ GLOBAL PREMIUM ANIMATION SYSTEM ═══ -->
+    <!-- --- GLOBAL PREMIUM ANIMATION SYSTEM --- -->
     <style>
-        /* --- Scroll Reveal Base --- */
-        .sr {
-            opacity: 0;
-            transition: opacity 0.7s cubic-bezier(.22, .68, 0, 1.1), transform 0.7s cubic-bezier(.22, .68, 0, 1.1);
-        }
-
         .sr-up {
             transform: translateY(48px);
         }
@@ -3213,7 +3015,7 @@ _Please review and confirm the subscription._`;
     <script>
         (function () {
 
-            /* ── 1. Scroll Reveal ── */
+            /* -- 1. Scroll Reveal -- */
             const srEls = document.querySelectorAll('.sr');
             if (srEls.length) {
                 const srObs = new IntersectionObserver((entries) => {
@@ -3227,7 +3029,7 @@ _Please review and confirm the subscription._`;
                 srEls.forEach(el => srObs.observe(el));
             }
 
-            /* ── 2. Animated Counters (Servall in Numbers) ── */
+            /* -- 2. Animated Counters (Servall in Numbers) -- */
             const counters = document.querySelectorAll('[data-count]');
             if (counters.length) {
                 const countObs = new IntersectionObserver((entries) => {
@@ -3253,7 +3055,7 @@ _Please review and confirm the subscription._`;
                 counters.forEach(el => countObs.observe(el));
             }
 
-            /* ── 3. Service cards — stagger pop-in ── */
+            /* -- 3. Service cards ? stagger pop-in -- */
             const serviceCards = document.querySelectorAll('#services .group');
             if (serviceCards.length) {
                 const cardObs = new IntersectionObserver((entries) => {
@@ -3274,7 +3076,7 @@ _Please review and confirm the subscription._`;
                 });
             }
 
-            /* ── 4. Why Servall cards — stagger pop-in ── */
+            /* -- 4. Why Servall cards ? stagger pop-in -- */
             const whyCards = document.querySelectorAll('#why-us .why-card');
             if (whyCards.length) {
                 const whyObs = new IntersectionObserver((entries) => {
@@ -3295,7 +3097,7 @@ _Please review and confirm the subscription._`;
                 });
             }
 
-            /* ── 5. Stat cards (Servall in Numbers) pop-in ── */
+            /* -- 5. Stat cards (Servall in Numbers) pop-in -- */
             const snCards = document.querySelectorAll('.sn-card');
             if (snCards.length) {
                 const snObs = new IntersectionObserver((entries) => {
@@ -3316,17 +3118,17 @@ _Please review and confirm the subscription._`;
                 });
             }
 
-            /* ── 6. Button press effect on all CTA buttons ── */
+            /* -- 6. Button press effect on all CTA buttons -- */
             document.querySelectorAll('button, a[href="#"]').forEach(btn => {
                 btn.classList.add('btn-press');
             });
 
-            /* ── 7. Card shine on all white cards ── */
+            /* -- 7. Card shine on all white cards -- */
             document.querySelectorAll('#services .group, .sn-card, .why-card > div').forEach(el => {
                 el.classList.add('card-shine');
             });
 
-            /* ── 8. AMC section cards stagger ── */
+            /* -- 8. AMC section cards stagger -- */
             const amcCards = document.querySelectorAll('#amc-packages [class*="rounded"]');
             if (amcCards.length) {
                 const amcObs = new IntersectionObserver(entries => {
@@ -3347,13 +3149,13 @@ _Please review and confirm the subscription._`;
                 });
             }
 
-            /* ── 9. Hero stat pills — float animation ── */
+            /* -- 9. Hero stat pills ? float animation -- */
             const statPills = document.querySelectorAll('.hero-stat-pill');
             statPills.forEach((pill, i) => {
                 pill.classList.add(['hero-float', 'hero-float-2', 'hero-float-3'][i % 3]);
             });
 
-            /* ── 10. Section headings — slide-up on enter ── */
+            /* -- 10. Section headings ? slide-up on enter -- */
             document.querySelectorAll('section h2, section .text-center > span').forEach((el, i) => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(24px)';
@@ -3374,7 +3176,182 @@ _Please review and confirm the subscription._`;
 
         })();
     </script>
+    <!-- Dynamic Website Configurations Hub -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const response = await fetch("http://localhost:5000/api/v1/misc/website-config");
+                const data = await response.json();
+                const config = data?.data?.config;
+                if (!config) return;
 
+                const updateHref = (selector, hrefValue) => {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(el => { if (hrefValue) el.href = hrefValue; });
+                };
+
+                const updateText = (selector, textValue) => {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(el => { el.innerHTML = textValue; });
+                };
+
+                if (config.contact) {
+                    updateText("#dynamic-herophone", config.contact.phone);
+                    updateText(".dynamic-phone-text", config.contact.phone);
+                    updateHref(".dynamic-phone-href", `tel:${config.contact.phone}`);
+                    updateHref(".dynamic-email-href", `mailto:${config.contact.email}`);
+                    updateText(".dynamic-email-text", config.contact.email);
+                    updateText(".dynamic-address-text", config.contact.address);
+                }
+
+                if (config.global) {
+                    if (config.global.footerDescription) updateText(".dynamic-footer-description", config.global.footerDescription);
+                    if (config.global.copyrightText) updateText(".dynamic-copyright-text", config.global.copyrightText);
+
+                    if (config.global.stats?.length) {
+                        // Update Marquee if present
+                        const marqueeTrack = document.getElementById("marquee-track");
+                        if (marqueeTrack) {
+                            const statsItems = config.global.stats.map(s => [s.icon || 'star', '#ef4444', `${s.value}${s.suffix} ${s.label}`]);
+                            let html = '';
+                            for (let pass = 0; pass < 3; pass++) {
+                                statsItems.forEach(([icon, color, label]) => {
+                                    html += `<div class='group inline-flex items-center gap-3 mx-2.5 px-5 py-2.5 rounded-full border cursor-default whitespace-nowrap transition-all duration-300 hover:scale-105' style='border-color:${color}30;background:${color}10;'><div class='w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300' style='background:${color}22;'><i data-lucide='${icon}' style='color:${color};width:15px;height:15px;display:block;'></i></div><span class='text-sm font-semibold text-slate-200 group-hover:text-white transition-colors'>${label}</span></div>`;
+                                });
+                            }
+                            marqueeTrack.innerHTML = html;
+                        }
+
+                        // Update Our Impact Section
+                        const impactGrid = document.getElementById("dynamic-impact-grid");
+                        if (impactGrid) {
+                            const colors = ['bg-red-50 text-red-600 group-hover:bg-red-600', 'bg-orange-50 text-orange-600 group-hover:bg-orange-500', 'bg-blue-50 text-blue-600 group-hover:bg-blue-600', 'bg-green-50 text-green-600 group-hover:bg-green-600'];
+                            const hoverColors = ['group-hover:text-white', 'group-hover:text-white', 'group-hover:text-white', 'group-hover:text-white'];
+                            const accentColors = ['text-red-600', 'text-orange-500', 'text-blue-600', 'text-green-600'];
+
+                            impactGrid.innerHTML = config.global.stats.map((stat, i) => {
+                                const colorIdx = i % colors.length;
+                                const hasDecimal = stat.value.includes('.');
+                                const decimals = hasDecimal ? stat.value.split('.')[1].length : 0;
+
+                                return `
+                                    <div class="sn-card group relative bg-white rounded-3xl p-4 sm:p-6 md:p-8 text-center shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 cursor-default">
+                                        <div class="sn-card-glow"></div>
+                                        <div class="relative z-10">
+                                            <div class="w-16 h-16 rounded-2xl ${colors[colorIdx]} flex items-center justify-center mx-auto mb-5 transition-all duration-300 shadow-sm">
+                                                <i data-lucide="${stat.icon || 'star'}" class="w-8 h-8"></i>
+                                            </div>
+                                            <div class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-slate-900 mb-1 leading-none tracking-tight">
+                                                <span class="counter-value tabular-nums" data-target="${stat.value}" data-decimals="${decimals}">0</span><span class="${accentColors[colorIdx]}">${stat.suffix}</span>
+                                            </div>
+                                            <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-widest mt-2">${stat.label}</p>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('');
+
+                            // Re-trigger counter animation if available
+                            if (typeof window.animateCounters === 'function') {
+                                // Reset window.hasAnimated to allow re-triggering if it was already seen
+                                window.hasAnimated = false;
+                                // Reset all counts to 0 before triggering
+                                document.querySelectorAll('.counter-value').forEach(c => c.innerText = '0');
+
+                                // If the section is already in view, trigger manually
+                                const statsSec = document.getElementById('stats-section');
+                                if (statsSec) {
+                                    const rect = statsSec.getBoundingClientRect();
+                                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                                        window.hasAnimated = true;
+                                        window.animateCounters();
+                                    }
+                                }
+                            }
+                        }
+
+                        if (window.lucide) window.lucide.createIcons();
+                    }
+                }
+
+                if (config.mainPage?.seo) {
+                    if (config.mainPage.seo.title) document.title = config.mainPage.seo.title;
+                    if (config.mainPage.seo.description) {
+                        const metaDesc = document.querySelector('meta[name="description"]');
+                        if (metaDesc) metaDesc.content = config.mainPage.seo.description;
+                    }
+                    if (config.mainPage.seo.keywords) {
+                        const metaKeywords = document.querySelector('meta[name="keywords"]');
+                        if (metaKeywords) metaKeywords.content = config.mainPage.seo.keywords;
+                    }
+                }
+
+                if (config.socials) {
+                    updateHref(".dynamic-facebook", config.socials.facebook);
+                    updateHref(".dynamic-instagram", config.socials.instagram);
+                    updateHref(".dynamic-linkedin", config.socials.linkedin);
+                    updateHref(".dynamic-youtube", config.socials.youtube);
+                }
+
+                if (config.appLinks?.linktree) {
+                    updateHref(".dynamic-app-link", config.appLinks.linktree);
+                }
+
+                if (config.mainPage) {
+                    const heroTitle = document.getElementById("dynamic-hero-title");
+                    if (heroTitle && config.mainPage.heroTitle) {
+                        heroTitle.innerHTML = config.mainPage.heroTitle;
+                    }
+
+                    const servicesContainer = document.getElementById("dynamic-services-container");
+                    if (servicesContainer && config.mainPage.services?.length) {
+                        servicesContainer.innerHTML = config.mainPage.services.map((svc, i) => `
+                            <div class="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col cursor-pointer border border-slate-100 hover:border-red-100 hover:-translate-y-2">
+                                <div class="h-1.5 w-full ${svc.bgColor || 'bg-red-500'} group-hover:h-2 transition-all duration-300"></div>
+                                <div class="p-6 flex flex-col flex-1">
+                                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 text-white shadow-lg group-hover:scale-110 transition-transform duration-300 ${svc.bgColor || 'bg-red-500'}">
+                                        <i data-lucide="${svc.icon}" class="w-7 h-7"></i>
+                                    </div>
+                                    <h3 class="text-base font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors leading-snug">${svc.title}</h3>
+                                    <p class="text-sm text-slate-500 leading-relaxed flex-1">${svc.description}</p>
+                                </div>
+                            </div>
+                        `).join('');
+                        setTimeout(() => { if (window.lucide) window.lucide.createIcons(); }, 0);
+                    }
+                }
+
+                if (config.amcPage) {
+                    const amcHeroTitle = document.getElementById("dynamic-amc-hero-title");
+                    if (amcHeroTitle && config.amcPage.heroTitle) {
+                        amcHeroTitle.innerHTML = config.amcPage.heroTitle;
+                    }
+                    const amcHeroSubtitle = document.getElementById("dynamic-amc-hero-subtitle");
+                    if (amcHeroSubtitle && config.amcPage.heroSubtitle) {
+                        amcHeroSubtitle.innerHTML = config.amcPage.heroSubtitle;
+                    }
+
+                    const benefitsContainer = document.getElementById("dynamic-benefits-container");
+                    if (benefitsContainer && config.amcPage.benefits?.length) {
+                        benefitsContainer.innerHTML = config.amcPage.benefits.map((bn, i) => `
+                            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-2" style="animation: fade-in-up 0.8s ease-out forwards; animation-delay: ${i * 0.1}s; opacity: 0;">
+                                <div class="w-16 h-16 rounded-2xl bg-red-50 flex items-center justify-center mb-8 group-hover:bg-red-600 transition-colors duration-300">
+                                    <i data-lucide="${bn.icon}" class="w-8 h-8 text-red-600 group-hover:text-white transition-colors"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-4">${bn.title}</h3>
+                                <p class="text-slate-600 leading-relaxed">${bn.description}</p>
+                            </div>
+                        `).join('');
+                    }
+                }
+
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            } catch (err) {
+                console.error("Failed to load website configuration", err);
+            }
+        });
+    </script>
 </body>
 
 
