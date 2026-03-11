@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -75,6 +75,16 @@
 
         body {
             font-family: 'Inter', sans-serif;
+        }
+
+        /* Print: show navbar once at top, avoid repetition on every page */
+        @media print {
+            #navbar {
+                position: static !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+            }
         }
     </style>
 </head>
@@ -336,7 +346,7 @@
             </div>
 
             <div id="amc-packages-container"
-                class="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto items-stretch">
+                class="flex flex-wrap md:flex-nowrap justify-center gap-8 max-w-4xl mx-auto items-stretch">
                 <!-- Packages will be injected here via JS -->
                 <div class="col-span-full py-12 flex justify-center w-full">
                     <i data-lucide="loader-2" class="w-8 h-8 text-red-600 animate-spin"></i>
@@ -1171,7 +1181,7 @@
 
                         const payload = {
                             name: bfName.value.trim(),
-                            email: document.getElementById('bf-email').value.trim() || 'customer@example.com',
+                            email: document.getElementById('bf-email').value.trim() || '',
                             phone: bfPhone.value.trim(),
                             city: bfCity.value,
                             zipCode: document.getElementById('bf-zipcode').value.trim(),
@@ -2392,7 +2402,7 @@ _Please review and confirm the subscription._`;
 
         // ---- FETCH DYNAMIC FAQS ----
         document.addEventListener('DOMContentLoaded', () => {
-            const loadFaqs = async (apiUrl, containerId, containerBgClass, iconBgClass) => {
+            const loadFaqs = async (apiUrl, containerId) => {
                 const container = document.getElementById(containerId);
                 if (!container) return;
 
@@ -2404,10 +2414,10 @@ _Please review and confirm the subscription._`;
                         container.innerHTML = ''; // Clear loading text
                         data.data.faqs.forEach(faq => {
                             const itemHtml = `
-                            <div class="faq-item ${containerBgClass} border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
+                            <div class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300">
                                 <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
                                     <span class="text-lg font-bold text-slate-900">${faq.question}</span>
-                                    <div class="faq-icon shrink-0 w-8 h-8 rounded-full ${iconBgClass} text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
+                                    <div class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
                                         <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                     </div>
                                 </button>
@@ -2423,7 +2433,7 @@ _Please review and confirm the subscription._`;
                             lucide.createIcons();
                         }
 
-                        // Attach accordion toggle logic to the new items
+                        // Attach accordion toggle logic (same as service landing page)
                         const toggles = container.querySelectorAll('.faq-toggle');
                         toggles.forEach(toggle => {
                             toggle.addEventListener('click', () => {
@@ -2438,18 +2448,22 @@ _Please review and confirm the subscription._`;
                                 container.querySelectorAll('.faq-icon').forEach(i => {
                                     if (i !== icon) {
                                         i.classList.remove('rotate-180', 'bg-red-600', 'text-white');
-                                        i.classList.add('text-red-600');
+                                        i.classList.add('bg-white', 'text-red-600');
                                     }
                                 });
                                 container.querySelectorAll('.faq-item').forEach(i => {
                                     if (i !== item) i.classList.remove('shadow-md', 'border-red-100');
                                 });
                                 // Toggle current
+                                const isOpening = content.classList.contains('hidden');
                                 content.classList.toggle('hidden');
-                                icon.classList.toggle('rotate-180');
-                                icon.classList.toggle('bg-red-600');
-                                icon.classList.toggle('text-red-600');
-                                icon.classList.toggle('text-white');
+                                if (isOpening) {
+                                    icon.classList.remove('bg-white', 'text-red-600');
+                                    icon.classList.add('rotate-180', 'bg-red-600', 'text-white');
+                                } else {
+                                    icon.classList.remove('rotate-180', 'bg-red-600', 'text-white');
+                                    icon.classList.add('bg-white', 'text-red-600');
+                                }
                                 item.classList.toggle('shadow-md');
                                 item.classList.toggle('border-red-100');
                             });
@@ -2461,9 +2475,9 @@ _Please review and confirm the subscription._`;
             };
 
             // Call for AMC FAQs
-            loadFaqs('http://localhost:5000/api/v1/misc/faqs/amc', 'amc-faq-accordion-container', 'bg-white', 'bg-slate-50');
+            loadFaqs('http://localhost:5000/api/v1/misc/faqs/amc', 'amc-faq-accordion-container');
             // Call for Main FAQs
-            loadFaqs('http://localhost:5000/api/v1/misc/faqs/main', 'main-faq-accordion-container', 'bg-slate-50', 'bg-white');
+            loadFaqs('http://localhost:5000/api/v1/misc/faqs/main', 'main-faq-accordion-container');
         });
     </script>
 
@@ -2496,8 +2510,8 @@ _Please review and confirm the subscription._`;
 
                     const wrapperClasses = isPopular
 
-                        ? "w-full md:w-[400px] bg-gradient-to-br from-red-600 to-red-700 rounded-[2rem] p-8 md:p-10 border border-red-500 shadow-xl shadow-red-600/20 hover:shadow-2xl hover:shadow-red-600/30 transition-all duration-300 relative group flex flex-col h-full animate-fade-in-up"
-                        : "w-full md:w-[400px] bg-white rounded-[2rem] p-8 md:p-10 border border-slate-200 shadow-xl hover:shadow-2xl hover:border-red-200 transition-all duration-300 relative group flex flex-col h-full animate-fade-in-up";
+                        ? "w-full md:w-[400px] bg-gradient-to-br from-red-600 to-red-700 rounded-[2rem] p-8 md:p-10 border border-red-500 shadow-xl shadow-red-600/20 hover:shadow-2xl hover:shadow-red-600/30 transition-all duration-300 relative group flex flex-col animate-fade-in-up"
+                        : "w-full md:w-[400px] bg-white rounded-[2rem] p-8 md:p-10 border border-slate-200 shadow-xl hover:shadow-2xl hover:border-red-200 transition-all duration-300 relative group flex flex-col animate-fade-in-up";
                     const titleClasses = isPopular ? "text-2xl font-bold text-white mb-2" : "text-2xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors";
                     const priceValueClasses = isPopular ? "text-5xl font-extrabold text-white" : "text-5xl font-extrabold text-slate-900";
                     const priceLabelClasses = isPopular ? "text-red-200 font-medium text-xl capitalize" : "text-slate-500 font-medium text-xl capitalize";
@@ -2520,11 +2534,12 @@ _Please review and confirm the subscription._`;
                     const cardDiv = document.createElement("div");
                     cardDiv.className = wrapperClasses;
                     cardDiv.style.animationDelay = (index * 0.15) + "s"; cardDiv.style.animationFillMode = "both";
+                    const description = (pkg.description && String(pkg.description).trim()) ? pkg.description : '';
                     cardDiv.innerHTML = `
                         ${decorationHtml}
                         <div class="mb-8 relative z-10">
                             <h3 class="${titleClasses}">${pkg.title}</h3>
-                            <p class="text-sm ${isPopular ? 'text-red-100' : 'text-slate-500'} mt-2">${pkg.description}</p>
+                            ${description ? `<p class="text-sm ${isPopular ? 'text-red-100' : 'text-slate-500'} mt-2">${description}</p>` : ''}
                             <div class="flex items-baseline gap-1 mt-4">
                                 <span class="${priceValueClasses}">&#8377;${pkg.price}</span><span class="${priceLabelClasses}">/year</span>
                             </div>
@@ -2534,7 +2549,9 @@ _Please review and confirm the subscription._`;
                     container.appendChild(cardDiv);
 
 
+                    
                 });
+
                 if (window.lucide) window.lucide.createIcons();
             }
 
