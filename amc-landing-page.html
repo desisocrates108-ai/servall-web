@@ -882,7 +882,7 @@
 
             // Workshop Data (for AMC modal store selector) — use same API base as rest of page
             let workshopsData = [];
-            const API_BASE = (typeof window.SERVALL_API_BASE !== 'undefined') ? window.SERVALL_API_BASE : 'http://localhost:5000/api/v1';
+            const API_BASE = (typeof window.SERVALL_API_BASE !== 'undefined') ? window.SERVALL_API_BASE : 'https://api.servall.in/api/v1';
             fetch(API_BASE + "/misc/workshop/get")
                 .then(res => res.json())
                 .then(result => {
@@ -1078,13 +1078,13 @@
                     };
 
                     try {
-                        const configRes = await fetch('http://localhost:5000/api/v1/misc/config');
+                        const configRes = await fetch('https://api.servall.in/api/v1/misc/config');
                         const configData = await configRes.json();
                         if (configData?.data?.data?.razorpayKeyId) {
                             razorpayKey = configData.data.data.razorpayKeyId;
                         }
 
-                        const orderRes = await fetch('http://localhost:5000/api/v1/misc/create-amc-order', {
+                        const orderRes = await fetch('https://api.servall.in/api/v1/misc/create-amc-order', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(amcPayload)
@@ -1122,7 +1122,7 @@
                                 razorpay_signature: paymentResponse.razorpay_signature
                             };
                             try {
-                                const response = await fetch('http://localhost:5000/api/v1/misc/book/amc', {
+                                const response = await fetch('https://api.servall.in/api/v1/misc/book/amc', {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify(verifyPayload)
@@ -1159,7 +1159,7 @@
                                 document.getElementById('btn-amc-pay-text').textContent = 'Proceed to Pay';
                                 document.getElementById('btn-amc-pay-spinner').classList.add('hidden');
                                 if (razorpayDbId) {
-                                    fetch('http://localhost:5000/api/v1/misc/order/fail', {
+                                    fetch('https://api.servall.in/api/v1/misc/order/fail', {
                                         method: 'POST',
                                         headers: { 'Content-Type': 'application/json' },
                                         body: JSON.stringify({ dbId: razorpayDbId })
@@ -1368,8 +1368,8 @@
                 }
             };
 
-            loadFaqs('http://localhost:5000/api/v1/misc/faqs/amc', 'amc-faq-accordion-container');
-            loadFaqs('http://localhost:5000/api/v1/misc/faqs/main', 'main-faq-accordion-container');
+            loadFaqs('https://api.servall.in/api/v1/misc/faqs/amc', 'amc-faq-accordion-container');
+            loadFaqs('https://api.servall.in/api/v1/misc/faqs/main', 'main-faq-accordion-container');
         });
     </script>
 
@@ -1378,7 +1378,7 @@
     <!-- ============================================================ -->
     <script>
         (function () {
-            const API_URL = 'http://localhost:5000/api/v1/misc/amc-packages';
+            const API_URL = 'https://api.servall.in/api/v1/misc/amc-packages';
 
             function renderPackages(packages) {
                 var container = document.getElementById('amc-packages-container');
@@ -1588,7 +1588,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/v1/misc/website-config");
+                const response = await fetch("https://api.servall.in/api/v1/misc/website-config");
                 const data = await response.json();
                 const config = data?.data?.config;
                 if (!config) return;

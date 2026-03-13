@@ -1795,7 +1795,7 @@
             const loadServiceTypes = async () => {
                 const container = document.getElementById('service-chips-container');
                 try {
-                    const response = await fetch("http://localhost:5000/api/v1/misc/service-types");
+                    const response = await fetch("https://api.servall.in/api/v1/misc/service-types");
                     const result = await response.json();
 
                     if (result?.status === 'success' && result?.data?.serviceTypes) {
@@ -1882,14 +1882,14 @@
                     let razorpayDbId = null;
 
                     try {
-                        const configRes = await fetch('http://localhost:5000/api/v1/misc/config');
+                        const configRes = await fetch('https://api.servall.in/api/v1/misc/config');
                         const configData = await configRes.json();
                         if (configData?.data?.data?.razorpayKeyId) {
                             razorpayKey = configData.data.data.razorpayKeyId;
                         }
 
                         // STEP 1: Create Unpaid App Order & Razorpay Order
-                        const orderRes = await fetch('http://localhost:5000/api/v1/misc/create-service-order', {
+                        const orderRes = await fetch('https://api.servall.in/api/v1/misc/create-service-order', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)
@@ -1929,7 +1929,7 @@
                                     razorpay_signature: paymentResponse.razorpay_signature
                                 };
 
-                                const response = await fetch('http://localhost:5000/api/v1/misc/book/service', {
+                                const response = await fetch('https://api.servall.in/api/v1/misc/book/service', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'
@@ -1992,7 +1992,7 @@ _Please review and confirm the booking._`;
                                 text.textContent = 'Pay and Book';
                                 spinner.classList.add('hidden');
                                 if (razorpayDbId) {
-                                    fetch('http://localhost:5000/api/v1/misc/order/fail', {
+                                    fetch('https://api.servall.in/api/v1/misc/order/fail', {
                                         method: 'POST',
                                         headers: { 'Content-Type': 'application/json' },
                                         body: JSON.stringify({ dbId: razorpayDbId })
@@ -2346,7 +2346,7 @@ _Please review and confirm the booking._`;
 
             const loadAmcPackages = async () => {
                 try {
-                    const response = await fetch('http://localhost:5000/api/v1/misc/amc-packages');
+                    const response = await fetch('https://api.servall.in/api/v1/misc/amc-packages');
                     const responseData = await response.json();
 
                     if (responseData.status === 'success' && responseData.data?.packages) {
@@ -2580,13 +2580,13 @@ _Please review and confirm the booking._`;
                     };
 
                     try {
-                        const configRes = await fetch('http://localhost:5000/api/v1/misc/config');
+                        const configRes = await fetch('https://api.servall.in/api/v1/misc/config');
                         const configData = await configRes.json();
                         if (configData?.data?.data?.razorpayKeyId) {
                             razorpayKey = configData?.data?.data?.razorpayKeyId;
                         }
 
-                        const orderRes = await fetch('http://localhost:5000/api/v1/misc/create-amc-order', {
+                        const orderRes = await fetch('https://api.servall.in/api/v1/misc/create-amc-order', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(amcPayload)
@@ -2626,7 +2626,7 @@ _Please review and confirm the booking._`;
                             };
 
                             try {
-                                const response = await fetch('http://localhost:5000/api/v1/misc/book/amc', {
+                                const response = await fetch('https://api.servall.in/api/v1/misc/book/amc', {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify(verifyPayload)
@@ -2685,7 +2685,7 @@ _Please review and confirm the subscription._`;
                                 document.getElementById('btn-amc-pay-spinner').classList.add('hidden');
 
                                 if (razorpayDbId) {
-                                    fetch('http://localhost:5000/api/v1/misc/order/fail', {
+                                    fetch('https://api.servall.in/api/v1/misc/order/fail', {
                                         method: 'POST',
                                         headers: { 'Content-Type': 'application/json' },
                                         body: JSON.stringify({ dbId: razorpayDbId })
@@ -2727,7 +2727,7 @@ _Please review and confirm the subscription._`;
             if (!container) return;
 
             try {
-                const response = await fetch('http://localhost:5000/api/v1/misc/faqs/main');
+                const response = await fetch('https://api.servall.in/api/v1/misc/faqs/main');
                 const data = await response.json();
 
                 if (data.status === 'success' && data.data.faqs.length > 0) {
@@ -3179,7 +3179,7 @@ _Please review and confirm the subscription._`;
         document.addEventListener("DOMContentLoaded", async () => {
             try {
                 await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-                const response = await fetch("http://localhost:5000/api/v1/misc/website-config");
+                const response = await fetch("https://api.servall.in/api/v1/misc/website-config");
                 const data = await response.json();
                 const config = data?.data?.config;
                 if (!config) return;

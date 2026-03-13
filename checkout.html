@@ -150,7 +150,7 @@
             }
 
             // Fetch order details
-            fetch(`http://localhost:5000/api/v1/misc/order/${orderType}/${orderId}`)
+            fetch(`https://api.servall.in/api/v1/misc/order/${orderType}/${orderId}`)
                 .then(res => res.json())
                 .then(response => {
                     // Check if success
@@ -207,8 +207,8 @@
                         };
 
                         const verifyUrl = orderType === 'service'
-                            ? 'http://localhost:5000/api/v1/misc/book/service'
-                            : 'http://localhost:5000/api/v1/misc/book/amc';
+                            ? 'https://api.servall.in/api/v1/misc/book/service'
+                            : 'https://api.servall.in/api/v1/misc/book/amc';
 
                         try {
                             const response = await fetch(verifyUrl, {
