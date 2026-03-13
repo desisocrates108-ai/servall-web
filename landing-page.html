@@ -72,6 +72,8 @@
 
         body {
             font-family: 'Inter', sans-serif;
+            opacity: 0;
+            transition: opacity 180ms ease;
         }
 
         /* Print: show navbar once at top, avoid repetition on every page */
@@ -1201,8 +1203,8 @@
                 </p>
             </div>
 
-            <div class="max-w-3xl mx-auto space-y-4" id="faq-accordion-container">
-                <!-- FAQs will be dynamically loaded here by JavaScript -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto items-start min-h-[80px]" id="faq-accordion-container">
+                <p class="text-slate-400 text-sm col-span-full text-center py-6">Loading FAQs…</p>
             </div>
         </div>
     </section>
@@ -1314,7 +1316,7 @@
             <!-- Bottom Bar -->
             <div
                 class="border-t border-slate-800 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-                <p class="dynamic-copyright-text">© 2026 Servall Automotive Pvt. Ltd. All rights reserved.</p>
+                <p class="dynamic-copyright-text">© <span id="copyright-year">2026</span> Servall Automotive Pvt. Ltd. All rights reserved.</p>
                 <div class="flex gap-6">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
@@ -1322,6 +1324,7 @@
             </div>
         </div>
     </footer>
+    <script>(function(){ var y = document.getElementById('copyright-year'); if (y) y.textContent = new Date().getFullYear(); })();</script>
 
     <!-- Contact Options Modal -->
     <div id="contact-modal"
@@ -1447,11 +1450,10 @@
     </div>
 
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // Setup Date Picker Minimum (Tomorrow onwards)
+        // Setup Date Picker Minimum (Tomorrow onwards) and init Lucide once DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            document.body.style.opacity = '1';
             const dateInput = document.getElementById('bf-date');
             if (dateInput) {
                 const tomorrow = new Date();
@@ -1893,7 +1895,6 @@
                             body: JSON.stringify(payload)
                         });
                         const orderData = await orderRes.json();
-                        console.log("DEBUG orderData", orderData);
                         if (orderData?.data?.orderId && orderData?.data?.dbId) {
                             razorpayOrderId = orderData.data.orderId;
                             razorpayDbId = orderData.data.dbId;
@@ -2323,46 +2324,6 @@ _Please review and confirm the booking._`;
                 observer.observe(statsSection);
             }
 
-            // FAQ Accordion Logic
-            const faqToggles = document.querySelectorAll('.faq-toggle');
-            faqToggles.forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                    const parent = toggle.closest('.faq-item');
-                    const content = parent.querySelector('.faq-content');
-                    const icon = parent.querySelector('.faq-icon');
-
-                    // Close all other open FAQs
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        if (item !== parent) {
-                            item.classList.remove('border-red-200', 'shadow-md', 'bg-red-50/30');
-                            item.classList.add('bg-slate-50', 'border-slate-100');
-                            const itemContent = item.querySelector('.faq-content');
-                            const itemIcon = item.querySelector('.faq-icon');
-                            if (!itemContent.classList.contains('hidden')) {
-                                itemContent.classList.add('hidden');
-                                itemIcon.classList.remove('rotate-180', 'bg-red-600', 'text-white');
-                                itemIcon.classList.add('bg-white', 'text-red-600');
-                            }
-                        }
-                    });
-
-                    // Toggle current FAQ
-                    if (content.classList.contains('hidden')) {
-                        content.classList.remove('hidden');
-                        parent.classList.remove('bg-slate-50', 'border-slate-100');
-                        parent.classList.add('border-red-200', 'shadow-md', 'bg-red-50/30');
-                        icon.classList.add('rotate-180', 'bg-red-600', 'text-white');
-                        icon.classList.remove('bg-white', 'text-red-600');
-                    } else {
-                        content.classList.add('hidden');
-                        parent.classList.add('bg-slate-50', 'border-slate-100');
-                        parent.classList.remove('border-red-200', 'shadow-md', 'bg-red-50/30');
-                        icon.classList.remove('rotate-180', 'bg-red-600', 'text-white');
-                        icon.classList.add('bg-white', 'text-red-600');
-                    }
-                });
-            });
-
             // AMC Modal Logic
             const amcModal = document.getElementById('amc-modal');
             const amcModalContent = document.getElementById('amc-modal-content');
@@ -2770,37 +2731,54 @@ _Please review and confirm the subscription._`;
                 const data = await response.json();
 
                 if (data.status === 'success' && data.data.faqs.length > 0) {
-                    container.innerHTML = ''; // Clear loading text
-                    data.data.faqs.forEach(faq => {
+                    const faqs = data.data.faqs;
+                    container.className = faqs.length === 1
+                        ? 'max-w-3xl mx-auto space-y-4'
+                        : 'grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto items-start';
+                    container.innerHTML = '';
+                    faqs.forEach(faq => {
                         const itemHtml = `
-                        <div class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300">
-                            <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
-                                <span class="text-lg font-bold text-slate-900">${faq.question}</span>
-                                <div class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        <div class="faq-item bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col">
+                            <button type="button" class="faq-toggle w-full px-6 py-4 flex items-start justify-between gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-2xl">
+                                <span class="text-base font-semibold text-slate-900 flex-1 min-w-0">${faq.question}</span>
+                                <div class="faq-icon shrink-0 w-7 h-7 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300 mt-0.5">
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
                                 </div>
                             </button>
-                            <div class="faq-content hidden px-6 pb-6 text-slate-600 animate-in fade-in slide-in-from-top-2 duration-300 leading-relaxed whitespace-pre-line">
-                                <p>${faq.answer}</p>
+                            <div class="faq-content hidden px-6 pb-4 pt-0 text-slate-600 leading-relaxed">
+                                <p class="mt-1 mb-0 text-sm">${faq.answer}</p>
                             </div>
                         </div>`;
                         container.insertAdjacentHTML('beforeend', itemHtml);
                     });
 
-                    // Re-initialize lucide icons for the newly injected HTML
-                    if (typeof lucide !== 'undefined') {
-                        lucide.createIcons();
-                    }
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+                    // Equalise button heights within each row pair so left & right match
+                    requestAnimationFrame(() => {
+                        const toggles = Array.from(container.querySelectorAll('.faq-toggle'));
+                        toggles.forEach(t => { t.style.minHeight = ''; });
+                        for (let i = 0; i < toggles.length; i += 2) {
+                            const a = toggles[i], b = toggles[i + 1];
+                            if (a && b) {
+                                const h = Math.max(a.getBoundingClientRect().height, b.getBoundingClientRect().height);
+                                a.style.minHeight = h + 'px';
+                                b.style.minHeight = h + 'px';
+                            }
+                        }
+                    });
 
                     // Attach accordion toggle logic to the new items
                     const toggles = container.querySelectorAll('.faq-toggle');
                     toggles.forEach(toggle => {
-                        toggle.addEventListener('click', () => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
                             const content = toggle.nextElementSibling;
                             const icon = toggle.querySelector('.faq-icon');
                             const item = toggle.parentElement;
 
-                            // Close all others
+                            // Close all others in this container only
                             container.querySelectorAll('.faq-content').forEach(c => {
                                 if (c !== content) c.classList.add('hidden');
                             });
@@ -3200,6 +3178,7 @@ _Please review and confirm the subscription._`;
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
             try {
+                await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
                 const response = await fetch("http://localhost:5000/api/v1/misc/website-config");
                 const data = await response.json();
                 const config = data?.data?.config;
@@ -3226,7 +3205,10 @@ _Please review and confirm the subscription._`;
 
                 if (config.global) {
                     if (config.global.footerDescription) updateText(".dynamic-footer-description", config.global.footerDescription);
-                    if (config.global.copyrightText) updateText(".dynamic-copyright-text", config.global.copyrightText);
+                    if (config.global.copyrightText) {
+                        const copyrightWithYear = config.global.copyrightText.replace(/\b20\d{2}\b/, String(new Date().getFullYear()));
+                        updateText(".dynamic-copyright-text", copyrightWithYear);
+                    }
 
                     if (config.global.stats?.length) {
                         // Update Marquee if present

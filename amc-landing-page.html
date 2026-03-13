@@ -72,7 +72,7 @@
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; opacity: 0; transition: opacity 180ms ease; }
 
         @media print {
             #navbar { position: static !important; top: auto !important; left: auto !important; right: auto !important; }
@@ -82,6 +82,105 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Benefit cards — same look as plan cards (border, shadow, radius); content centered */
+        .amc-benefit-card {
+            min-width: 200px;
+            flex: 1 1 200px;
+            max-width: 320px;
+            border-radius: 20px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 24px;
+            gap: 16px;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .amc-benefit-card:hover {
+            box-shadow: 0 14px 48px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+        .amc-benefit-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: #fef2f2;
+            color: #dc2626;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .amc-benefit-body { flex: 1; min-width: 0; text-align: center; }
+
+        /* AMC plan cards: smaller on mobile so 2 plans visible without scroll */
+        @media (max-width: 640px) {
+            #amc-packages-container {
+                column-gap: 8px;
+                row-gap: 28px;
+                max-width: 100%;
+                padding-left: 4px;
+                padding-right: 4px;
+            }
+            .amc-plan-card {
+                min-width: 0 !important;
+                width: auto !important;
+                flex: 0 0 calc(50% - 4px) !important;
+                max-width: calc(50% - 4px);
+                border-radius: 12px !important;
+            }
+            .amc-plan-card .amc-card-title-block { padding: 10px 8px 0 !important; }
+            .amc-plan-card .amc-card-title-block .amc-card-title { font-size: 12px !important; }
+            .amc-plan-card .amc-card-title-block .amc-card-desc { font-size: 10px !important; margin-top: 2px !important; }
+            .amc-plan-card .amc-card-price-block { padding: 6px 8px 0 !important; }
+            .amc-plan-card .amc-card-price-block .amc-card-price { font-size: 22px !important; }
+            .amc-plan-card .amc-card-price-block .amc-card-peryear { font-size: 10px !important; }
+            .amc-plan-card .amc-card-divider { margin: 8px 10px !important; }
+            .amc-plan-card .amc-card-features { padding: 2px 8px 0 !important; }
+            .amc-plan-card .amc-card-features .amc-card-features-row { padding: 4px 0 !important; }
+            .amc-plan-card .amc-card-features .amc-card-features-row span:last-child { font-size: 10px !important; line-height: 1.35 !important; }
+            .amc-plan-card .amc-card-features .amc-feature-icon { width: 14px !important; min-width: 14px !important; height: 14px !important; }
+            .amc-plan-card .amc-card-features .amc-feature-icon svg { width: 8px !important; height: 8px !important; }
+            .amc-plan-card .amc-card-cta { padding: 10px 8px 12px !important; }
+            .amc-plan-card .amc-card-cta button { height: 36px !important; font-size: 11px !important; border-radius: 8px !important; }
+            .amc-plan-card .amc-card-chip span { font-size: 8px !important; padding: 4px 8px !important; }
+
+            /* Benefit cards on mobile — strict 2-column grid so all cards same size and aligned */
+            #dynamic-benefits-container {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 8px;
+                row-gap: 16px;
+                justify-content: stretch;
+                max-width: 100%;
+            }
+            .amc-benefit-card {
+                min-width: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 12px !important;
+                gap: 10px !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            .amc-benefit-card .amc-benefit-body { text-align: center !important; width: 100%; }
+            .amc-benefit-card h3 {
+                font-size: 13px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 4px !important;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                min-height: 1.3em;
+            }
+            .amc-benefit-card .amc-benefit-body p { font-size: 11px !important; line-height: 1.4 !important; }
+            .amc-benefit-icon { width: 36px !important; height: 36px !important; min-width: 36px !important; border-radius: 12px !important; }
+            .amc-benefit-icon i, .amc-benefit-icon svg { width: 18px !important; height: 18px !important; }
+        }
     </style>
 </head>
 
@@ -199,7 +298,7 @@
             </p>
 
             <!-- Trust pills -->
-            <div class="flex flex-wrap justify-center gap-3 mb-10 animate-fade-in-up">
+            <div class="flex flex-wrap justify-center gap-3 mb-4 animate-fade-in-up">
                 <div class="flex items-center gap-2 bg-white/8 border border-white/10 rounded-xl px-3 py-2 backdrop-blur-sm">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     <span class="text-sm font-semibold text-slate-200">100% Genuine</span>
@@ -213,7 +312,7 @@
 
             <!-- ── AMC Plan Cards — horizontal row, equal height; top padding for chip ── -->
             <div id="amc-packages-container"
-                class="w-full flex flex-wrap justify-center items-stretch gap-5 max-w-4xl mx-auto pt-6">
+                class="w-full flex flex-wrap justify-center items-stretch gap-5 max-w-2xl sm:max-w-7xl mx-auto pt-2">
                 <!-- Loading spinner -->
                 <div class="flex justify-center py-12 w-full">
                     <i data-lucide="loader-2" class="w-8 h-8 text-red-500 animate-spin"></i>
@@ -244,43 +343,10 @@
                     long.</p>
             </div>
 
-            <!-- Benefits Grid — populated by website-config script -->
+            <!-- Benefits Grid — populated only from backend (config.amcPage.benefits) -->
             <div id="dynamic-benefits-container"
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <!-- Placeholder cards shown until dynamic data loads -->
-                <div
-                    class="rounded-2xl bg-white border border-slate-100 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4 sr sr-up sr-d1">
-                    <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center">
-                        <i data-lucide="shield-check" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 mb-1">Complete Protection</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Comprehensive coverage for all maintenance
-                            and repair needs throughout the year.</p>
-                    </div>
-                </div>
-                <div
-                    class="rounded-2xl bg-white border border-slate-100 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4 sr sr-up sr-d2">
-                    <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center">
-                        <i data-lucide="clock" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 mb-1">Priority Service</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Skip the queue with dedicated priority
-                            service lanes exclusively for AMC members.</p>
-                    </div>
-                </div>
-                <div
-                    class="rounded-2xl bg-white border border-slate-100 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4 sr sr-up sr-d3">
-                    <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center">
-                        <i data-lucide="indian-rupee" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 mb-1">Cost Savings</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Save significantly on annual maintenance
-                            and repair bills with our pre-paid plans.</p>
-                    </div>
-                </div>
+                class="w-full flex flex-wrap justify-center items-stretch gap-5 max-w-2xl sm:max-w-7xl mx-auto">
+                <!-- Cards are injected here by website-config from backend amcPage.benefits -->
             </div>
         </div>
     </section>
@@ -294,13 +360,15 @@
                 <span
                     class="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wider text-red-600 uppercase bg-red-50 border border-red-100 rounded-full">3
                     Simple Steps</span>
+
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How Servall AMC Works</h2>
+                <div class="max-w-3xl mx-auto mb-12 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="Choose your plan"
+                        class="w-full h-48 sm:h-56 object-cover">
+                </div>
                 <p class="text-lg text-slate-500">Getting your two-wheeler protected is easier than ever.</p>
             </div>
-            <div class="max-w-3xl mx-auto mb-12 rounded-2xl overflow-hidden shadow-md border border-slate-200">
-                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="Choose your plan"
-                    class="w-full h-48 sm:h-56 object-cover">
-            </div>
+    
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative max-w-4xl mx-auto">
                 <div
@@ -477,7 +545,7 @@
                 <p class="text-lg text-slate-500">Everything you need to know about Servall Annual Maintenance
                     Contracts.</p>
             </div>
-            <div class="max-w-3xl mx-auto space-y-4" id="amc-faq-accordion-container">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto items-start" id="amc-faq-accordion-container">
                 <div class="flex justify-center py-8">
                     <i data-lucide="loader-2" class="w-6 h-6 text-slate-400 animate-spin"></i>
                 </div>
@@ -504,7 +572,7 @@
                 <p class="text-lg text-slate-600">Find answers to common questions about our two-wheeler care and
                     services.</p>
             </div>
-            <div class="max-w-3xl mx-auto space-y-4" id="main-faq-accordion-container">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto items-start" id="main-faq-accordion-container">
                 <div class="flex justify-center py-8">
                     <i data-lucide="loader-2" class="w-6 h-6 text-slate-400 animate-spin"></i>
                 </div>
@@ -605,7 +673,7 @@
 
             <div
                 class="border-t border-slate-800 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-                <p class="dynamic-copyright-text">© 2026 Servall Automotive Pvt. Ltd. All rights reserved.</p>
+                <p class="dynamic-copyright-text">© <span id="copyright-year">2026</span> Servall Automotive Pvt. Ltd. All rights reserved.</p>
                 <div class="flex gap-6">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
@@ -613,6 +681,7 @@
             </div>
         </div>
     </footer>
+    <script>(function(){ var y = document.getElementById('copyright-year'); if (y) y.textContent = new Date().getFullYear(); })();</script>
 
     <!-- ============================================================ -->
     <!-- CONTACT OPTIONS MODAL                                          -->
@@ -747,9 +816,10 @@
     <!-- ============================================================ -->
     <script>
         window.AMC_PLANS = {};
-        lucide.createIcons();
 
         document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            document.body.style.opacity = '1';
             // Navbar Scroll Logic
             const navbar = document.getElementById('navbar');
             const logo = document.getElementById('nav-logo');
@@ -810,9 +880,10 @@
                 });
             });
 
-            // Workshop Data (for AMC modal store selector)
+            // Workshop Data (for AMC modal store selector) — use same API base as rest of page
             let workshopsData = [];
-            fetch("https://api.servall.in/api/v1/misc/workshop/get")
+            const API_BASE = (typeof window.SERVALL_API_BASE !== 'undefined') ? window.SERVALL_API_BASE : 'http://localhost:5000/api/v1';
+            fetch(API_BASE + "/misc/workshop/get")
                 .then(res => res.json())
                 .then(result => {
                     const items = result?.data?.workshops || result || [];
@@ -1223,18 +1294,23 @@
                     const data = await response.json();
 
                     if (data.status === 'success' && data.data.faqs.length > 0) {
+                        const faqs = data.data.faqs;
+                        container.className = faqs.length === 1
+                            ? 'max-w-3xl mx-auto space-y-4'
+                            : 'grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto items-start';
+                        container.id = containerId;
                         container.innerHTML = '';
-                        data.data.faqs.forEach(faq => {
+                        faqs.forEach(faq => {
                             const itemHtml = `
-                            <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm">
-                                <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-t-2xl bg-white">
-                                    <span class="text-base font-bold text-slate-900 pr-4">${faq.question}</span>
-                                    <div class="faq-icon shrink-0 w-8 h-8 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300">
-                                        <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                            <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm flex flex-col">
+                                <button type="button" class="faq-toggle w-full px-6 py-4 flex items-start justify-between gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-t-2xl bg-white">
+                                    <span class="text-base font-semibold text-slate-900 flex-1 min-w-0">${faq.question}</span>
+                                    <div class="faq-icon shrink-0 w-7 h-7 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300 mt-0.5">
+                                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
                                     </div>
                                 </button>
-                                <div class="faq-content hidden px-6 pb-6 pt-0 text-slate-600 leading-relaxed whitespace-pre-line bg-white border-t border-slate-100">
-                                    <p>${faq.answer}</p>
+                                <div class="faq-content hidden px-6 pb-4 pt-0 text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                                    <p class="mt-1 mb-0 text-sm">${faq.answer}</p>
                                 </div>
                             </div>`;
                             container.insertAdjacentHTML('beforeend', itemHtml);
@@ -1242,8 +1318,24 @@
 
                         if (typeof lucide !== 'undefined') lucide.createIcons();
 
+                        // Equalise button heights per row pair
+                        requestAnimationFrame(() => {
+                            const toggles = Array.from(container.querySelectorAll('.faq-toggle'));
+                            toggles.forEach(t => { t.style.minHeight = ''; });
+                            for (let i = 0; i < toggles.length; i += 2) {
+                                const a = toggles[i], b = toggles[i + 1];
+                                if (a && b) {
+                                    const h = Math.max(a.getBoundingClientRect().height, b.getBoundingClientRect().height);
+                                    a.style.minHeight = h + 'px';
+                                    b.style.minHeight = h + 'px';
+                                }
+                            }
+                        });
+
                         container.querySelectorAll('.faq-toggle').forEach(toggle => {
-                            toggle.addEventListener('click', () => {
+                            toggle.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
                                 const content = toggle.nextElementSibling;
                                 const icon = toggle.querySelector('.faq-icon');
                                 const item = toggle.parentElement;
@@ -1315,8 +1407,8 @@
                         var isLast = idx === features.length - 1;
                         var borderStyle = isLast ? 'none' : ('1px solid ' + featBorder);
                         return (
-                            '<div style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:' + borderStyle + ';text-align:left;">' +
-                            '<span style="width:20px;height:20px;min-width:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;' +
+                            '<div class="amc-card-features-row" style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:' + borderStyle + ';text-align:left;">' +
+                            '<span class="amc-feature-icon" style="width:20px;height:20px;min-width:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;' +
                             (pop ? 'background:rgba(255,255,255,0.2);color:#fff;' : 'background:#fef2f2;color:#dc2626;') + '">' +
                             CHECK + '</span>' +
                             '<span style="font-size:13px;color:' + (pop ? 'rgba(255,255,255,0.95)' : '#334155') + ';line-height:1.45;flex:1;min-width:0;text-align:left;word-break:break-word;">' + f + '</span>' +
@@ -1324,12 +1416,12 @@
                         );
                     }).join('');
 
-                    // Card wrapper — equal height (no margin on popular); slightly wider
+                    // Card wrapper — height equalised by JS after render; class for mobile overrides
                     var card = document.createElement('div');
+                    card.className = 'amc-plan-card';
                     card.style.cssText =
-                        'min-width:280px;width:280px;' +
-                        'flex:1 1 280px;' +
-                        'min-height:420px;' +
+                        'min-width:220px;width:220px;' +
+                        'flex:1 1 220px;' +
                         'border-radius:20px;' +
                         'overflow:visible;' +
                         'display:flex;' +
@@ -1345,25 +1437,25 @@
                     if (pop) {
                         html =
                             // Most Popular chip — above card, no overlap with content
-                            '<div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);z-index:2;">' +
+                            '<div class="amc-card-chip" style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);z-index:2;">' +
                             '<span style="display:inline-block;background:#facc15;color:#78350f;font-size:10px;font-weight:800;padding:6px 16px;border-radius:999px;letter-spacing:0.05em;text-transform:uppercase;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,0.25);">★ Most Popular</span>' +
                             '</div>' +
                             // Plan name (padding so chip sits clearly above)
-                            '<div style="text-align:center;padding:20px 20px 0 20px;">' +
-                            '<div style="font-size:16px;font-weight:800;color:#fff;">' + pkg.title + '</div>' +
-                            (desc ? '<div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:3px;">' + desc + '</div>' : '') +
+                            '<div class="amc-card-title-block" style="text-align:center;padding:20px 20px 0 20px;">' +
+                            '<div class="amc-card-title" style="font-size:16px;font-weight:800;color:#fff;margin-top:10px;">' + pkg.title + '</div>' +
+                            (desc ? '<div class="amc-card-desc" style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:3px;">' + desc + '</div>' : '') +
                             '</div>' +
                             // Big price
-                            '<div style="text-align:center;padding:10px 20px 0;">' +
-                            '<div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">&#8377;' + pkg.price + '</div>' +
-                            '<div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;">per year</div>' +
+                            '<div class="amc-card-price-block" style="text-align:center;padding:10px 20px 0;">' +
+                            '<div class="amc-card-price" style="font-size:42px;font-weight:900;color:#fff;line-height:1;">&#8377;' + pkg.price + '</div>' +
+                            '<div class="amc-card-peryear" style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;">per year</div>' +
                             '</div>' +
                             // Divider
-                            '<div style="margin:14px 20px;height:1px;background:rgba(255,255,255,0.15);"></div>' +
+                            '<div class="amc-card-divider" style="margin:14px 20px;height:1px;background:rgba(255,255,255,0.15);"></div>' +
                             // Features — left-aligned
-                            '<div style="padding:4px 20px 0;flex:1;min-height:0;text-align:left;">' + featHtml + '</div>' +
+                            '<div class="amc-card-features" style="padding:4px 20px 0;flex:1;min-height:0;text-align:left;">' + featHtml + '</div>' +
                             // Button
-                            '<div style="padding:16px 20px 20px;">' +
+                            '<div class="amc-card-cta" style="padding:16px 20px 20px;">' +
                             '<button onclick="window.openAmcModal(\'' + pkg._id + '\')" ' +
                             'style="width:100%;height:44px;border-radius:12px;border:none;cursor:pointer;font-weight:800;font-size:14px;background:#fff;color:#dc2626;letter-spacing:0.01em;" ' +
                             'onmouseover="this.style.background=\'#fef2f2\'" onmouseout="this.style.background=\'#fff\'">Book Now</button>' +
@@ -1373,21 +1465,21 @@
                     } else {
                         html =
                             // Plan name
-                            '<div style="text-align:center;padding:20px 20px 0;">' +
-                            '<div style="font-size:16px;font-weight:800;color:#0f172a;">' + pkg.title + '</div>' +
-                            (desc ? '<div style="font-size:12px;color:#94a3b8;margin-top:3px;">' + desc + '</div>' : '') +
+                            '<div class="amc-card-title-block" style="text-align:center;padding:20px 20px 0;">' +
+                            '<div class="amc-card-title" style="font-size:16px;font-weight:800;color:#0f172a;margin-top:10px;">' + pkg.title + '</div>' +
+                            (desc ? '<div class="amc-card-desc" style="font-size:12px;color:#94a3b8;margin-top:3px;">' + desc + '</div>' : '') +
                             '</div>' +
                             // Big price
-                            '<div style="text-align:center;padding:10px 20px 0;">' +
-                            '<div style="font-size:42px;font-weight:900;color:#dc2626;line-height:1;">&#8377;' + pkg.price + '</div>' +
-                            '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">per year</div>' +
+                            '<div class="amc-card-price-block" style="text-align:center;padding:10px 20px 0;">' +
+                            '<div class="amc-card-price" style="font-size:42px;font-weight:900;color:#dc2626;line-height:1;">&#8377;' + pkg.price + '</div>' +
+                            '<div class="amc-card-peryear" style="font-size:12px;color:#94a3b8;margin-top:2px;">per year</div>' +
                             '</div>' +
                             // Divider — gray only (no red merge on white card)
-                            '<div style="margin:14px 20px;height:1px;background:#e2e8f0;"></div>' +
+                            '<div class="amc-card-divider" style="margin:14px 20px;height:1px;background:#e2e8f0;"></div>' +
                             // Features
-                            '<div style="padding:4px 20px 0;flex:1;min-height:0;text-align:left;">' + featHtml + '</div>' +
+                            '<div class="amc-card-features" style="padding:4px 20px 0;flex:1;min-height:0;text-align:left;">' + featHtml + '</div>' +
                             // Button
-                            '<div style="padding:16px 20px 20px;">' +
+                            '<div class="amc-card-cta" style="padding:16px 20px 20px;">' +
                             '<button onclick="window.openAmcModal(\'' + pkg._id + '\')" ' +
                             'style="width:100%;height:44px;border-radius:12px;border:none;cursor:pointer;font-weight:800;font-size:14px;background:#dc2626;color:#fff;" ' +
                             'onmouseover="this.style.background=\'#b91c1c\'" onmouseout="this.style.background=\'#dc2626\'">Book Now</button>' +
@@ -1397,6 +1489,66 @@
                     card.innerHTML = html;
                     container.appendChild(card);
                 });
+
+                // Dynamically cap card width based on plan count so cards look
+                // well-proportioned at any count (1–2 wider, 3–4+ appropriately sized).
+                var count = packages.length;
+                var cardMaxW = count <= 1 ? 420 : count === 2 ? 380 : count === 3 ? 340 : 300;
+                container.querySelectorAll('.amc-plan-card').forEach(function (c) {
+                    c.style.maxWidth = cardMaxW + 'px';
+                });
+
+                // After all cards are in the DOM, equalise their heights so every card
+                // matches the tallest one — works regardless of how many features each plan has.
+                equaliseCardHeights();
+            }
+
+            function equaliseCardHeights() {
+                var cards = document.querySelectorAll('.amc-plan-card');
+                if (!cards.length) return;
+                // Reset any previously-set explicit height so we can measure natural height
+                cards.forEach(function (c) { c.style.height = ''; });
+                var maxH = 0;
+                cards.forEach(function (c) {
+                    var h = c.getBoundingClientRect().height;
+                    if (h > maxH) maxH = h;
+                });
+                if (maxH > 0) {
+                    cards.forEach(function (c) { c.style.height = maxH + 'px'; });
+                }
+            }
+
+            // Re-equalise on resize (handles orientation changes and desktop ↔ mobile)
+            window.addEventListener('resize', function () {
+                var cards = document.querySelectorAll('.amc-plan-card');
+                if (cards.length) equaliseCardHeights();
+                var benefitCards = document.querySelectorAll('.amc-benefit-card');
+                if (benefitCards.length) equaliseBenefitCardHeights();
+            });
+
+            function equaliseBenefitCardHeights() {
+                var cards = document.querySelectorAll('.amc-benefit-card');
+                if (!cards.length) return;
+                cards.forEach(function (c) { c.style.height = ''; });
+                var maxH = 0;
+                cards.forEach(function (c) {
+                    var h = c.getBoundingClientRect().height;
+                    if (h > maxH) maxH = h;
+                });
+                if (maxH > 0) cards.forEach(function (c) { c.style.height = maxH + 'px'; });
+            }
+            window.equaliseBenefitCardHeights = equaliseBenefitCardHeights;
+
+            // Equalise benefit card heights when DOM is ready (placeholder cards) and after layout
+            function runEqualiseBenefitHeights() {
+                if (document.querySelectorAll('.amc-benefit-card').length) {
+                    requestAnimationFrame(function () { equaliseBenefitCardHeights(); });
+                }
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', runEqualiseBenefitHeights);
+            } else {
+                runEqualiseBenefitHeights();
             }
 
             function init() {
@@ -1458,7 +1610,10 @@
                 // Global
                 if (config.global) {
                     if (config.global.footerDescription) updateText(".dynamic-footer-description", config.global.footerDescription);
-                    if (config.global.copyrightText) updateText(".dynamic-copyright-text", config.global.copyrightText);
+                    if (config.global.copyrightText) {
+                        const copyrightWithYear = config.global.copyrightText.replace(/\b20\d{2}\b/, String(new Date().getFullYear()));
+                        updateText(".dynamic-copyright-text", copyrightWithYear);
+                    }
 
                     // Trust Bar — dynamic from global.stats[]
                     if (config.global.stats?.length) {
@@ -1492,15 +1647,15 @@
                     const amcHeroSubtitle = document.getElementById("dynamic-amc-hero-subtitle");
                     if (amcHeroSubtitle && config.amcPage.heroSubtitle) amcHeroSubtitle.innerHTML = config.amcPage.heroSubtitle;
 
-                    // AMC Benefits — replace placeholder cards with dynamic ones
+                    // AMC Benefits — same card style as plan cards (amc-benefit-card)
                     const benefitsContainer = document.getElementById("dynamic-benefits-container");
                     if (benefitsContainer && config.amcPage.benefits?.length) {
                         benefitsContainer.innerHTML = config.amcPage.benefits.map((bn, i) => `
-                            <div class="rounded-2xl bg-white border border-slate-100 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4 sr sr-up sr-d${Math.min(i + 1, 6)}">
-                                <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center">
+                            <div class="amc-benefit-card sr sr-up sr-d${Math.min(i + 1, 6)}">
+                                <div class="amc-benefit-icon">
                                     <i data-lucide="${bn.icon}" class="w-6 h-6"></i>
                                 </div>
-                                <div>
+                                <div class="amc-benefit-body">
                                     <h3 class="font-bold text-slate-900 mb-1">${bn.title}</h3>
                                     <p class="text-slate-500 text-sm leading-relaxed">${bn.description}</p>
                                 </div>
@@ -1548,6 +1703,10 @@
                 if (config.appLinks?.linktree) updateHref(".dynamic-app-link", config.appLinks.linktree);
 
                 if (window.lucide) window.lucide.createIcons();
+
+                if (window.equaliseBenefitCardHeights) {
+                    requestAnimationFrame(function () { window.equaliseBenefitCardHeights(); });
+                }
 
                 // Re-trigger scroll reveal for dynamically injected elements
                 if (typeof observeNewSR === 'function') {
