@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -131,76 +131,13 @@
         src="https://www.facebook.com/tr?id=728742261595288&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+    <script src="js/config.js"></script>
   </head>
 
-  <body>
+  <body data-nav-transparent>
     <div id="wrapper">
-      <!-- Header -->
-      <header id="pageHeaderWrapper" class="main-header">
-        <div class="container container-lg">
-          <div class="header-container">
-            <div class="logo-holder">
-              <div class="logo">
-                <a href="index.html" title="Servall.">
-                  <img src="images/logo.png" alt="Servall." />
-                </a>
-              </div>
-            </div>
-            <div class="top-right">
-              <div class="top">
-                <div class="row gutters-8 grid-8 align-items-center">
-                  <div class="col-auto size-14 white hide-md phone-clickable">
-                    SERVALL AUTOMOTIVE PRIVATE LIMITED
-                  </div>
-                  <div class="col-auto size-14 white hide-md phone-clickable">
-                    Enquiry: +91 900 500 9500
-                    <a href="mailto:info@servall.in">info@servall.in</a>
-                  </div>
-                  <div class="col-auto">
-                    <div class="row gutters-3">
-                      <div class="col-auto">
-                        <a
-                          href="service-booking.html#bookServiceForm"
-                          class="custom-button btn-sm"
-                          >Book Service</a
-                        >
-                      </div>
-                      <div class="col-auto hide-xs">
-                        <a
-                          href="franchise-landing.html#franchiseInquiryForm"
-                          class="custom-button btn-sm"
-                          >Franchise Inquiry</a
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="topRightHeader">
-                <div class="nav-wrapper">
-                  <div class="custom-menu-wrap">
-                    <div class="nav-container">
-                      <nav class="nav">
-                        <ul class="main-menu">
-                          <li><a href="about-us.html">About Us</a></li>
-                          <li><a href="services.html">Services</a></li>
-                          <li>
-                            <a href="own-franchise.html">Own a Franchise </a>
-                          </li>
-                          <li><a href="performax.html">Performax</a></li>
-                          <li><a href="gallery.html">Gallery</a></li>
-                          <li><a href="contact-us.html">Contact Us</a></li>
-                        </ul>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-      <!-- Header END -->
+      <!-- Unified Navbar -->
+      <div id="servall-navbar"></div>
       <!-- Content Containers -->
       <div class="main-content-wrapper margin-container">
         <!-- Banner -->
@@ -1136,7 +1073,7 @@
                             Phone <br />+91 900 500 9500
                           </p>
                           <p>
-                            E-mail <br /><a href="mailto:info@servall.in"
+                            E-mail <br /><a class="sf-dynamic-email" href="mailto:info@servall.in"
                               >info@servall.in</a
                             >
                           </p>
@@ -1215,7 +1152,7 @@
       async function fetchData() {
         try {
           const response = await fetch(
-            "https://api.servall.in/api/v1/admin/home",
+            window.SERVALL_API_BASE + "/admin/home",
           );
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -1345,7 +1282,7 @@
                               .join("")}
                         </ul>
                         <div class="custom-button-holder pt10">
-                            <a href="service-booking.html#bookServiceForm" class="custom-button height-70">Book Service</a>
+                            <a href="services.html" class="custom-button height-70">Book Service</a>
                         </div>
                     </div>
                 `;
@@ -1503,7 +1440,7 @@
 
         // API endpoints
         const API = {
-          base: "https://api.servall.in/api/v1/misc",
+          base: window.SERVALL_API_BASE + "/misc",
           states: "/workshop/states",
           cities: (state) => `/workshop/${state}/cities`,
           workshopsByCity: (city) => `/workshop/cities/${city}`,
@@ -1602,7 +1539,7 @@
                         </div>
                         <p>${workshop.phoneNo || workshop.phone}</p>
                         <div class="custom-button-holder">
-                            <a href="service-booking.html#serviceForm" class="custom-button height-70">Book Service</a>
+                            <a href="services.html" class="custom-button height-70">Book Service</a>
                         </div>
                     </div>
                 </div>
@@ -1901,7 +1838,7 @@
       async function fetchTestimonials() {
         try {
           const response = await fetch(
-            "https://api.servall.in/api/v1/misc/testimonial",
+            window.SERVALL_API_BASE + "/misc/testimonial",
           );
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -1979,6 +1916,8 @@
         fetchTestimonials();
       });
     </script>
+<script src="js/unified-navbar.js"></script>
+    <script src="js/unified-footer.js"></script>
   </body>
 </html>
 

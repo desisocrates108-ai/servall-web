@@ -13,7 +13,7 @@ function createSEOLoader() {
     // Fetch SEO data from the API
     async fetchSEOData(pageName) {
       try {
-        const response = await fetch(`https://api.servall.in/api/v1/misc/seo?pageName=${pageName}`);
+        const response = await fetch(`${window.SERVALL_API_BASE}/misc/seo?pageName=${pageName}`);
         const result = await response.json();
         
         if (result.status === "success" && result.data.seoEntries.length > 0) {

@@ -26,6 +26,7 @@
             }
         }
     </style>
+<script src="js/config.js"></script>
 </head>
 
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans">
@@ -150,7 +151,7 @@
             }
 
             // Fetch order details
-            fetch(`https://api.servall.in/api/v1/misc/order/${orderType}/${orderId}`)
+            fetch(`${window.SERVALL_API_BASE}/misc/order/${orderType}/${orderId}`)
                 .then(res => res.json())
                 .then(response => {
                     // Check if success
@@ -207,8 +208,8 @@
                         };
 
                         const verifyUrl = orderType === 'service'
-                            ? 'https://api.servall.in/api/v1/misc/book/service'
-                            : 'https://api.servall.in/api/v1/misc/book/amc';
+                            ? window.SERVALL_API_BASE + '/misc/book/service'
+                            : window.SERVALL_API_BASE + '/misc/book/amc';
 
                         try {
                             const response = await fetch(verifyUrl, {

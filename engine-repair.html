@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -49,78 +49,13 @@
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main-script.js"></script>
+    <script src="js/config.js"></script>
   </head>
 
   <body>
     <div id="wrapper">
-      <!-- Header -->
-      <header id="pageHeaderWrapper" class="main-header">
-        <div class="container container-lg">
-          <div class="header-container">
-            <div class="logo-holder">
-              <div class="logo">
-                <a href="index.html" title="Servall.">
-                  <img src="images/logo.png" alt="Servall." />
-                </a>
-              </div>
-            </div>
-            <div class="top-right">
-              <div class="top">
-                <div class="row gutters-8 grid-8 align-items-center">
-                  <div class="col-auto size-14 white hide-md phone-clickable">
-                    SERVALL AUTOMOTIVE PRIVATE LIMITED
-                  </div>
-                  <div class="col-auto size-14 white hide-md phone-clickable">
-                    Enquiry: +91 900 500 9500
-                    <a href="mailto:info@servall.in">info@servall.in</a>
-                  </div>
-                  <div class="col-auto">
-                    <div class="row gutters-3">
-                      <div class="col-auto">
-                        <a
-                          href="service-booking.html#bookServiceForm"
-                          class="custom-button btn-sm"
-                          >Book Service</a
-                        >
-                      </div>
-                      <div class="col-auto hide-xs">
-                        <a
-                          href="franchise-landing.html#franchiseInquiryForm"
-                          class="custom-button btn-sm"
-                          >Franchise Inquiry</a
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="topRightHeader">
-                <div class="nav-wrapper">
-                  <div class="custom-menu-wrap">
-                    <div class="nav-container">
-                      <nav class="nav">
-                        <ul class="main-menu">
-                          <li class="selected">
-                            <a href="about-us.html">About Us</a>
-                          </li>
-                          <li><a href="services.html">Services</a></li>
-                          <li>
-                            <a href="own-franchise.html">Own a Franchise </a>
-                          </li>
-                          <li><a href="performax.html">Performax</a></li>
-                          <li><a href="gallery.html">Gallery</a></li>
-                          <li><a href="contact-us.html">Contact Us</a></li>
-                        </ul>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-      <!-- Header END -->
+      <!-- Unified Navbar -->
+      <div id="servall-navbar"></div>
       <!-- Content Containers -->
       <div class="main-content-wrapper margin-container">
         <!-- Banner -->
@@ -479,7 +414,7 @@
                             Phone <br />+91 900 500 9500
                           </p>
                           <p>
-                            E-mail <br /><a href="mailto:info@servall.in"
+                            E-mail <br /><a class="sf-dynamic-email" href="mailto:info@servall.in"
                               >info@servall.in</a
                             >
                           </p>
@@ -548,6 +483,8 @@
         });
       });
     </script>
+<script src="js/unified-navbar.js"></script>
+    <script src="js/unified-footer.js"></script>
   </body>
 </html>
 
