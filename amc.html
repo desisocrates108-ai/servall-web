@@ -85,11 +85,11 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* Benefit cards — same look as plan cards (border, shadow, radius); content centered */
+        /* Benefit cards — grid cells: fill column; no flex-basis (old flex-wrap caused 5+1 rows) */
         .amc-benefit-card {
-            min-width: 200px;
-            flex: 1 1 200px;
-            max-width: 320px;
+            min-width: 0;
+            width: 100%;
+            max-width: none;
             border-radius: 20px;
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -248,6 +248,11 @@
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     <span class="text-sm font-semibold text-slate-200">100% Genuine</span>
                 </div>
+                <div class="flex items-center gap-2 bg-white/8 border border-white/10 rounded-xl px-3 py-2 backdrop-blur-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span class="text-sm font-semibold text-slate-200">Free Pickup & Drop</span>
+                </div>
+
                 <button onclick="window.openContactOptions('+91 900 500 9500')"
                     class="flex items-center gap-2 bg-red-600/20 border border-red-500/30 rounded-xl px-3 py-2 backdrop-blur-sm hover:bg-red-600/30 transition-colors">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 13 19.79 19.79 0 0 1 1.27 4.4 2 2 0 0 1 3.22 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -283,41 +288,41 @@
                 <span
                     class="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wider text-red-600 uppercase bg-red-50 border border-red-100 rounded-full">AMC
                     Benefits</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why Choose Servall AMC?</h2>
-                <p class="text-lg text-slate-600">Everything you need to keep your ride in top condition, all year
-                    long.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Everything Your Bike Deserves</h2>
+                <p class="text-lg text-slate-600">Six powerful inclusions — one unbeatable price. No asterisks, no hidden costs.</p>
             </div>
 
             <!-- Benefits Grid — populated only from backend (config.amcPage.benefits) -->
             <div id="dynamic-benefits-container"
-                class="w-full flex flex-wrap justify-center items-stretch gap-5 max-w-2xl sm:max-w-7xl mx-auto">
+                class="amc-benefits-grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto items-stretch">
                 <!-- Cards are injected here by website-config from backend amcPage.benefits -->
             </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- HOW IT WORKS — static 3-step section                          -->
+    <!-- HOW IT WORKS — static 4-step section                          -->
     <!-- ============================================================ -->
     <section class="py-20 bg-slate-50">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center max-w-2xl mx-auto mb-12 sr">
                 <span
-                    class="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wider text-red-600 uppercase bg-red-50 border border-red-100 rounded-full">3
-                    Simple Steps</span>
+                    class="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wider text-red-600 uppercase bg-red-50 border border-red-100 rounded-full">Zero Effort Process</span>
 
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How Servall AMC Works</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How It Works</h2>
                 <div class="max-w-3xl mx-auto mb-12 rounded-2xl overflow-hidden shadow-md border border-slate-200">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="Choose your plan"
+                    <img src="/images/htw.png" alt="Choose your plan"
                         class="w-full h-48 sm:h-56 object-cover">
                 </div>
-                <p class="text-lg text-slate-500">Getting your two-wheeler protected is easier than ever.</p>
+                <p class="text-lg text-slate-500">4 simple steps. Complete care from booking to delivery.</p>
             </div>
     
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative max-w-4xl mx-auto">
+            <div class="amc-steps-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 lg:gap-6 relative max-w-6xl mx-auto">
+                <!-- Horizontal connector only when all 4 steps sit in one row (lg+) -->
                 <div
-                    class="hidden md:block absolute top-[45px] left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-red-100 via-red-500 to-red-100 z-0">
+                    class="hidden lg:block pointer-events-none absolute top-[3rem] left-[8%] right-[8%] h-0.5 bg-gradient-to-r from-red-100 via-red-400 to-red-100 z-0"
+                    aria-hidden="true">
                 </div>
 
                 <div class="relative z-10 flex flex-col items-center text-center group sr sr-up sr-d1">
@@ -327,9 +332,8 @@
                             class="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center text-2xl font-black">
                             1</div>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Choose Your Plan</h3>
-                    <p class="text-slate-500">Select the package that fits your vehicle and needs from our range of
-                        plans above.</p>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Book AMC</h3>
+                    <p class="text-slate-500">Choose your plan and book online or via call in under 2 minutes. Instant confirmation.</p>
                 </div>
 
                 <div class="relative z-10 flex flex-col items-center text-center group sr sr-up sr-d2">
@@ -339,9 +343,8 @@
                             class="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center text-2xl font-black">
                             2</div>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Secure Payment</h3>
-                    <p class="text-slate-500">Pay securely online via Razorpay and get instant confirmation sent
-                        directly to your phone.</p>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">We Pickup</h3>
+                    <p class="text-slate-500">Our team arrives at your doorstep at your preferred time — no waiting, no stress.</p>
                 </div>
 
                 <div class="relative z-10 flex flex-col items-center text-center group sr sr-up sr-d3">
@@ -351,9 +354,18 @@
                             class="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center text-2xl font-black">
                             3</div>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Relax & Ride</h3>
-                    <p class="text-slate-500">Your vehicle is protected. Book your first free service or claim
-                        roadside assistance anytime.</p>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Expert Service</h3>
+                    <p class="text-slate-500">27-point checkup by certified technicians using genuine parts. Washing + polishing included.</p>
+                </div>
+                <div class="relative z-10 flex flex-col items-center text-center group sr sr-up sr-d4">
+                    <div
+                        class="w-24 h-24 rounded-full bg-white border-4 border-red-50 shadow-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-red-100 transition-all duration-300">
+                        <div
+                            class="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center text-2xl font-black">
+                            4</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Delivered Back</h3>
+                    <p class="text-slate-500">Your bike returns serviced, washed, polished and ready to ride — delivered to your door.</p>
                 </div>
             </div>
         </div>
@@ -374,7 +386,7 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto mb-12">
                 <div class="rounded-2xl overflow-hidden shadow-md border border-slate-100 h-40 sm:h-48">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Scooter - Activa"
+                    <img src="/images/wus.png" alt="Scooter - Activa"
                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="rounded-2xl overflow-hidden shadow-md border border-slate-100 h-40 sm:h-48">
@@ -452,51 +464,12 @@
                 </div>
             </div>
 
-            <!-- Trust Bar — replaced by dynamic global.stats[] from admin -->
+            <!-- Trust Bar — filled from global.stats (admin Trust Statistics); instant fallback then API -->
             <div id="dynamic-trust-bar" class="mt-14 flex flex-wrap justify-center gap-10 text-center">
-                <div>
-                    <p class="text-3xl font-black text-red-600">2.5L+</p>
-                    <p class="text-sm text-slate-500 mt-1">Happy Customers</p>
-                </div>
-                <div class="hidden sm:block w-px bg-slate-200"></div>
-                <div>
-                    <p class="text-3xl font-black text-red-600">4.8 &#9733;</p>
-                    <p class="text-sm text-slate-500 mt-1">Average Rating</p>
-                </div>
-                <div class="hidden sm:block w-px bg-slate-200"></div>
-                <div>
-                    <p class="text-3xl font-black text-red-600">38+</p>
-                    <p class="text-sm text-slate-500 mt-1">Outlets Across India</p>
-                </div>
-                <div class="hidden sm:block w-px bg-slate-200"></div>
-                <div>
-                    <p class="text-3xl font-black text-red-600">10 Yrs</p>
-                    <p class="text-sm text-slate-500 mt-1">of Trusted Service</p>
-                </div>
             </div>
         </div>
     </section>
 
-
-    <!-- ============================================================ -->
-    <!-- AMC FAQ — dynamic from /faqs/amc                              -->
-    <!-- ============================================================ -->
-    <section id="amc-faq" class="py-20 bg-white-600">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="text-center max-w-2xl mx-auto mb-12 sr">
-                <span
-                    class="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wider text-red-600 uppercase bg-red-50 border border-red-100 rounded-full">FAQ</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">AMC Common Questions</h2>
-                <p class="text-lg text-slate-500">Everything you need to know about Servall Annual Maintenance
-                    Contracts.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto items-start" id="amc-faq-accordion-container">
-                <div class="flex justify-center py-8">
-                    <i data-lucide="loader-2" class="w-6 h-6 text-slate-400 animate-spin"></i>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ============================================================ -->
     <!-- GENERAL FAQ — dynamic from /faqs/main                         -->
@@ -771,20 +744,29 @@
             // Workshop Data (for AMC modal store selector) — use same API base as rest of page
             let workshopsData = [];
             const API_BASE = window.SERVALL_API_BASE;
+            const FALLBACK_WORKSHOPS = [
+                { _id: 'fallback-1', workshop: { title: 'Servall Workshop', address: 'Contact for address', phoneNo: '+91 900 500 9500', maplink: '#' }, state: 'Karnataka' }
+            ];
+            function normalizeWorkshops(items) {
+                return (items || []).map(item => ({
+                    id: item._id,
+                    name: item.workshop?.title || 'Servall Workshop',
+                    location: item.workshop?.address || item.city,
+                    state: item.state,
+                    phone: item.workshop?.phoneNo,
+                    maplink: item.workshop?.maplink || '#'
+                }));
+            }
             fetch(API_BASE + "/misc/workshop/get")
-                .then(res => res.json())
+                .then(res => res.ok ? res.json() : Promise.reject(new Error('Network error')))
                 .then(result => {
                     const items = result?.data?.workshops || result || [];
-                    workshopsData = items.map(item => ({
-                        id: item._id,
-                        name: item.workshop?.title || 'Servall Workshop',
-                        location: item.workshop?.address || item.city,
-                        state: item.state,
-                        phone: item.workshop?.phoneNo,
-                        maplink: item.workshop?.maplink || '#'
-                    }));
+                    workshopsData = normalizeWorkshops(items).length ? normalizeWorkshops(items) : normalizeWorkshops(FALLBACK_WORKSHOPS);
                 })
-                .catch(err => console.error("Error loading workshops:", err));
+                .catch(err => {
+                    console.error("Error loading workshops:", err);
+                    workshopsData = normalizeWorkshops(FALLBACK_WORKSHOPS);
+                });
 
             // Contact Modal
             window.openContactOptions = (phone) => {
@@ -1173,16 +1155,22 @@
     <!-- ============================================================ -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const FALLBACK_FAQS = [
+                { question: 'What is an AMC?', answer: 'Annual Maintenance Contract covers periodic servicing and repairs for your two-wheeler at a fixed cost.' },
+                { question: 'How do I book?', answer: 'Choose a plan above, select your store, and complete the payment. Our team will confirm your booking.' },
+                { question: 'Can I cancel or reschedule?', answer: 'Yes. Contact your selected workshop or our helpline to reschedule your service.' }
+            ];
             const loadFaqs = async (apiUrl, containerId) => {
                 const container = document.getElementById(containerId);
                 if (!container) return;
 
                 try {
                     const response = await fetch(apiUrl);
+                    if (!response.ok) throw new Error('FAQ fetch failed');
                     const data = await response.json();
 
-                    if (data.status === 'success' && data.data.faqs.length > 0) {
-                        const faqs = data.data.faqs;
+                    let faqs = (data.status === 'success' && data.data?.faqs?.length) ? data.data.faqs : FALLBACK_FAQS;
+                    if (faqs.length > 0) {
                         container.className = faqs.length === 1
                             ? 'max-w-3xl mx-auto space-y-4'
                             : 'grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto items-start';
@@ -1252,7 +1240,67 @@
                     }
                 } catch (err) {
                     console.error("FAQ load failed for " + containerId + ":", err);
-                    container.innerHTML = '';
+                    const faqs = FALLBACK_FAQS;
+                    if (faqs.length > 0) {
+                        container.className = faqs.length === 1 ? 'max-w-3xl mx-auto space-y-4' : 'grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto items-start';
+                        container.id = containerId;
+                        container.innerHTML = '';
+                        faqs.forEach(faq => {
+                            const itemHtml = `
+                            <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm flex flex-col">
+                                <button type="button" class="faq-toggle w-full px-6 py-4 flex items-start justify-between gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-t-2xl bg-white">
+                                    <span class="text-base font-semibold text-slate-900 flex-1 min-w-0">${faq.question}</span>
+                                    <div class="faq-icon shrink-0 w-7 h-7 rounded-full bg-white text-red-600 flex items-center justify-center shadow-sm transition-transform duration-300 mt-0.5">
+                                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                    </div>
+                                </button>
+                                <div class="faq-content hidden px-6 pb-4 pt-0 text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                                    <p class="mt-1 mb-0 text-sm">${faq.answer}</p>
+                                </div>
+                            </div>`;
+                            container.insertAdjacentHTML('beforeend', itemHtml);
+                        });
+                        if (typeof lucide !== 'undefined') lucide.createIcons();
+                        requestAnimationFrame(() => {
+                            const toggles = Array.from(container.querySelectorAll('.faq-toggle'));
+                            toggles.forEach(t => { t.style.minHeight = ''; });
+                            for (let i = 0; i < toggles.length; i += 2) {
+                                const a = toggles[i], b = toggles[i + 1];
+                                if (a && b) {
+                                    const h = Math.max(a.getBoundingClientRect().height, b.getBoundingClientRect().height);
+                                    a.style.minHeight = h + 'px';
+                                    b.style.minHeight = h + 'px';
+                                }
+                            }
+                        });
+                        container.querySelectorAll('.faq-toggle').forEach(toggle => {
+                            toggle.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                const content = toggle.nextElementSibling;
+                                const icon = toggle.querySelector('.faq-icon');
+                                const item = toggle.parentElement;
+                                container.querySelectorAll('.faq-content').forEach(c => { if (c !== content) c.classList.add('hidden'); });
+                                container.querySelectorAll('.faq-icon').forEach(i => {
+                                    if (i !== icon) { i.classList.remove('rotate-180', 'bg-red-600', 'text-white'); i.classList.add('bg-white', 'text-red-600'); }
+                                });
+                                container.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('shadow-md', 'border-red-100'); });
+                                const isOpening = content.classList.contains('hidden');
+                                content.classList.toggle('hidden');
+                                if (isOpening) {
+                                    icon.classList.remove('bg-white', 'text-red-600');
+                                    icon.classList.add('rotate-180', 'bg-red-600', 'text-white');
+                                    item.classList.add('shadow-md', 'border-red-100');
+                                } else {
+                                    icon.classList.remove('rotate-180', 'bg-red-600', 'text-white');
+                                    icon.classList.add('bg-white', 'text-red-600');
+                                    item.classList.remove('shadow-md', 'border-red-100');
+                                }
+                            });
+                        });
+                    } else {
+                        container.innerHTML = '';
+                    }
                 }
             };
 
@@ -1267,6 +1315,11 @@
     <script>
         (function () {
             const API_URL = window.SERVALL_API_BASE + '/misc/amc-packages';
+            const FALLBACK_AMC_PACKAGES = [
+                { _id: 'fallback-basic', title: 'Basic Care', price: 999, isActive: true, isPopular: false, description: 'Essential maintenance', features: ['2 free services', 'Engine oil top-up', 'Basic checks'] },
+                { _id: 'fallback-popular', title: 'Premium Care', price: 1999, isActive: true, isPopular: true, description: 'Most popular', features: ['4 free services', 'Free pick-up', 'Genuine parts', 'Priority support'] },
+                { _id: 'fallback-complete', title: 'Complete Care', price: 3499, isActive: true, isPopular: false, description: 'Full coverage', features: ['6 free services', 'Free pick-up & drop', 'Genuine parts', 'Accidental support', '24x7 roadside'] }
+            ];
 
             function renderPackages(packages) {
                 var container = document.getElementById('amc-packages-container');
@@ -1415,15 +1468,28 @@
             });
 
             function equaliseBenefitCardHeights() {
-                var cards = document.querySelectorAll('.amc-benefit-card');
+                var cards = Array.from(document.querySelectorAll('#dynamic-benefits-container .amc-benefit-card'));
                 if (!cards.length) return;
                 cards.forEach(function (c) { c.style.height = ''; });
-                var maxH = 0;
-                cards.forEach(function (c) {
-                    var h = c.getBoundingClientRect().height;
-                    if (h > maxH) maxH = h;
+                /* Group cards by visual row (grid) so each row shares one height */
+                var rows = [];
+                cards.forEach(function (card) {
+                    var top = card.offsetTop;
+                    var row = rows.find(function (r) { return Math.abs(r.top - top) < 12; });
+                    if (!row) {
+                        row = { top: top, items: [] };
+                        rows.push(row);
+                    }
+                    row.items.push(card);
                 });
-                if (maxH > 0) cards.forEach(function (c) { c.style.height = maxH + 'px'; });
+                rows.forEach(function (row) {
+                    var maxH = 0;
+                    row.items.forEach(function (c) {
+                        var h = c.getBoundingClientRect().height;
+                        if (h > maxH) maxH = h;
+                    });
+                    if (maxH > 0) row.items.forEach(function (c) { c.style.height = maxH + 'px'; });
+                });
             }
             window.equaliseBenefitCardHeights = equaliseBenefitCardHeights;
 
@@ -1448,16 +1514,16 @@
                     .then(function (data) {
                         if (data && data.status === 'success' && data.data && data.data.packages) {
                             const active = data.data.packages.filter(function (p) { return p.isActive; });
-                            renderPackages(active);
+                            renderPackages(active.length ? active : FALLBACK_AMC_PACKAGES);
                         } else {
-                            throw new Error('Unexpected API response');
+                            renderPackages(FALLBACK_AMC_PACKAGES);
                         }
                     })
                     .catch(function (err) {
-                        console.error('[AMC Loader] Failed to fetch packages:', err);
+                        console.error('[AMC Loader] Failed to fetch packages, using fallback:', err);
                         const container = document.getElementById('amc-packages-container');
                         if (container) {
-                            container.innerHTML = '<p class="text-red-500 text-center py-8 text-sm">Could not load packages. Please ensure the server is running.</p>';
+                            renderPackages(FALLBACK_AMC_PACKAGES);
                         }
                     });
             }
@@ -1475,11 +1541,54 @@
     <!-- ============================================================ -->
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
+            const FALLBACK_CONFIG = {
+                contact: { phone: '+91 900 500 9500', email: 'support@servall.com', address: 'Servall Auto Care' },
+                global: {
+                    footerDescription: 'Your trusted two-wheeler care partner.',
+                    copyrightText: '© 2025 Servall. All rights reserved.',
+                    stats: [
+                        { value: '2.5', suffix: ' Lakh+', label: 'Happy Customers', icon: 'users' },
+                        { value: '4.8', suffix: '', label: 'Google Rating', icon: 'star' },
+                        { value: '38', suffix: '+', label: 'Outlets Across India', icon: 'map-pin' },
+                        { value: '10', suffix: '', label: 'Years of Trusted Service', icon: 'calendar' }
+                    ]
+                },
+                amcPage: {
+                    seo: { title: 'Servall AMC - Annual Maintenance Contract', description: 'Get the best care for your two-wheeler with Servall AMC.', keywords: 'bike service, amc, two wheeler care, servall' },
+                    heroTitle: 'Annual Maintenance Contract',
+                    heroSubtitle: 'One plan. Complete peace of mind.',
+                    benefits: [
+                        { icon: 'wrench', title: 'Expert Service', description: 'Trained technicians and genuine parts for your ride.' },
+                        { icon: 'shield-check', title: 'Hassle-Free', description: 'Fixed cost, no surprise bills.' },
+                        { icon: 'clock', title: 'Priority Support', description: 'Faster turnaround and dedicated support.' }
+                    ],
+                    reviews: []
+                },
+                socials: { facebook: '#', instagram: '#', linkedin: '#', youtube: '#' },
+                appLinks: { linktree: '#' }
+            };
+
+            const renderTrustBar = (stats) => {
+                const statsContainer = document.getElementById("dynamic-trust-bar");
+                if (!statsContainer || !stats?.length) return;
+                statsContainer.innerHTML = stats.map((stat, i) => `
+                                ${i > 0 ? '<div class="hidden sm:block w-px bg-slate-200"></div>' : ''}
+                                <div>
+                                    <p class="text-3xl font-black text-red-600">${String(stat.value ?? '')}${String(stat.suffix ?? '')}</p>
+                                    <p class="text-sm text-slate-500 mt-1">${String(stat.label ?? '')}</p>
+                                </div>
+                            `).join('');
+            };
+
+            // Same pattern as services.html: show Trust Statistics immediately, then swap when API returns global.stats
+            renderTrustBar(FALLBACK_CONFIG.global.stats);
+
             try {
                 const response = await fetch(window.SERVALL_API_BASE + "/misc/website-config");
+                if (!response.ok) throw new Error('Config fetch failed');
                 const data = await response.json();
-                const config = data?.data?.config;
-                if (!config) return;
+                let config = data?.data?.config;
+                if (!config) config = FALLBACK_CONFIG;
 
                 const updateHref = (selector, hrefValue) => {
                     document.querySelectorAll(selector).forEach(el => { if (hrefValue) el.href = hrefValue; });
@@ -1503,18 +1612,8 @@
                         updateText(".dynamic-copyright-text", copyrightWithYear);
                     }
 
-                    // Trust Bar — dynamic from global.stats[]
                     if (config.global.stats?.length) {
-                        const statsContainer = document.getElementById("dynamic-trust-bar");
-                        if (statsContainer) {
-                            statsContainer.innerHTML = config.global.stats.map((stat, i) => `
-                                ${i > 0 ? '<div class="hidden sm:block w-px bg-slate-200"></div>' : ''}
-                                <div>
-                                    <p class="text-3xl font-black text-red-600">${stat.value}${stat.suffix || ''}</p>
-                                    <p class="text-sm text-slate-500 mt-1">${stat.label}</p>
-                                </div>
-                            `).join('');
-                        }
+                        renderTrustBar(config.global.stats);
                     }
                 }
 
@@ -1604,7 +1703,92 @@
                 }
 
             } catch (err) {
-                console.error("Failed to load website configuration:", err);
+                console.error("Failed to load website configuration, using fallback:", err);
+                const config = FALLBACK_CONFIG;
+                const updateHref = (selector, hrefValue) => {
+                    document.querySelectorAll(selector).forEach(el => { if (hrefValue) el.href = hrefValue; });
+                };
+                const updateText = (selector, textValue) => {
+                    document.querySelectorAll(selector).forEach(el => { el.innerHTML = textValue; });
+                };
+                if (config.contact) {
+                    if (config.contact.phone) updateText(".dynamic-phone-text", config.contact.phone);
+                    if (config.contact.email) updateText(".dynamic-email-text", config.contact.email);
+                    if (config.contact.address) updateText(".dynamic-address-text", config.contact.address);
+                }
+                if (config.global) {
+                    if (config.global.footerDescription) updateText(".dynamic-footer-description", config.global.footerDescription);
+                    if (config.global.copyrightText) {
+                        const copyrightWithYear = config.global.copyrightText.replace(/\b20\d{2}\b/, String(new Date().getFullYear()));
+                        updateText(".dynamic-copyright-text", copyrightWithYear);
+                    }
+                    if (config.global.stats?.length) {
+                        renderTrustBar(config.global.stats);
+                    }
+                }
+                if (config.amcPage?.seo) {
+                    if (config.amcPage.seo.title) document.title = config.amcPage.seo.title;
+                    const metaDesc = document.querySelector('meta[name="description"]');
+                    if (metaDesc && config.amcPage.seo.description) metaDesc.content = config.amcPage.seo.description;
+                    const metaKeywords = document.querySelector('meta[name="keywords"]');
+                    if (metaKeywords && config.amcPage.seo.keywords) metaKeywords.content = config.amcPage.seo.keywords;
+                }
+                if (config.amcPage) {
+                    const amcHeroTitle = document.getElementById("dynamic-amc-hero-title");
+                    if (amcHeroTitle && config.amcPage.heroTitle) amcHeroTitle.innerHTML = config.amcPage.heroTitle;
+                    const amcHeroSubtitle = document.getElementById("dynamic-amc-hero-subtitle");
+                    if (amcHeroSubtitle && config.amcPage.heroSubtitle) amcHeroSubtitle.innerHTML = config.amcPage.heroSubtitle;
+                    const benefitsContainer = document.getElementById("dynamic-benefits-container");
+                    if (benefitsContainer && config.amcPage.benefits?.length) {
+                        benefitsContainer.innerHTML = config.amcPage.benefits.map((bn, i) => `
+                            <div class="amc-benefit-card sr sr-up sr-d${Math.min(i + 1, 6)}">
+                                <div class="amc-benefit-icon">
+                                    <i data-lucide="${bn.icon}" class="w-6 h-6"></i>
+                                </div>
+                                <div class="amc-benefit-body">
+                                    <h3 class="font-bold text-slate-900 mb-1">${bn.title}</h3>
+                                    <p class="text-slate-500 text-sm leading-relaxed">${bn.description}</p>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                    if (config.amcPage.reviews?.length) {
+                        const reviewsContainer = document.getElementById("dynamic-reviews-grid");
+                        if (reviewsContainer) {
+                            reviewsContainer.innerHTML = config.amcPage.reviews.map((rev, i) => {
+                                const stars = Array(5).fill(0).map((_, idx) => {
+                                    const isFull = (idx + 1) <= rev.rating;
+                                    return `<i data-lucide="star" class="w-4 h-4 ${isFull ? 'text-amber-400 fill-amber-400' : 'text-slate-300'}"></i>`;
+                                }).join('');
+                                const avatarLetter = rev.user_name ? rev.user_name.charAt(0).toUpperCase() : 'S';
+                                return `
+                                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col gap-4 sr sr-up sr-d${Math.min(i + 1, 6)}">
+                                        <div class="flex gap-1">${stars}</div>
+                                        <p class="text-slate-600 leading-relaxed text-sm">"${rev.message}"</p>
+                                        <div class="flex items-center gap-3 mt-auto pt-4 border-t border-slate-100">
+                                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center font-bold text-red-600 text-sm">${avatarLetter}</div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900 text-sm">${rev.user_name}</p>
+                                                <p class="text-xs text-slate-400">${rev.user_id}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('');
+                        }
+                    }
+                }
+                if (config.socials) {
+                    updateHref(".dynamic-facebook", config.socials.facebook);
+                    updateHref(".dynamic-instagram", config.socials.instagram);
+                    updateHref(".dynamic-linkedin", config.socials.linkedin);
+                    updateHref(".dynamic-youtube", config.socials.youtube);
+                }
+                if (config.appLinks?.linktree) updateHref(".dynamic-app-link", config.appLinks.linktree);
+                if (window.lucide) window.lucide.createIcons();
+                if (window.equaliseBenefitCardHeights) requestAnimationFrame(function () { window.equaliseBenefitCardHeights(); });
+                if (typeof observeNewSR === 'function') observeNewSR();
+                else document.querySelectorAll('.sr:not(.in)').forEach(el => el.classList.add('in'));
             }
         });
     </script>

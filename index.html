@@ -1620,8 +1620,9 @@
         initialize();
       });
 
-      // Function to render star rating with half-star support
+      // Function to render star rating with half-star support (ASCII \u2605 avoids UTF-8 mojibake)
       function renderStarRating(rating) {
+        const STAR = "\u2605";
         const maxStars = 5;
         const fullStars = Math.floor(rating);
         const hasHalfStar = rating % 1 >= 0.5;
@@ -1629,20 +1630,17 @@
 
         let starsHTML = "";
 
-        // Full stars
         for (let i = 0; i < fullStars; i++) {
-          starsHTML += '<span class="star filled">â˜…</span>';
+          starsHTML += `<span class="star filled">${STAR}</span>`;
         }
 
-        // Half star
         if (hasHalfStar) {
           starsHTML +=
-            '<span class="star half"><span class="star-empty">â˜…</span><span class="star-half">â˜…</span></span>';
+            `<span class="star half"><span class="star-empty">${STAR}</span><span class="star-half">${STAR}</span></span>`;
         }
 
-        // Empty stars
         for (let i = 0; i < emptyStars; i++) {
-          starsHTML += '<span class="star">â˜…</span>';
+          starsHTML += `<span class="star">${STAR}</span>`;
         }
 
         return starsHTML;
@@ -1740,7 +1738,7 @@
           container.innerHTML = `
                     <div class="swiper-slide">
                         <div class="testimonials-empty-state">
-                            <div class="testimonials-empty-icon">ðŸ’¬</div>
+                            <div class="testimonials-empty-icon" aria-hidden="true">&#9733;</div>
                             <h3 class="testimonials-empty-title">No Testimonials Yet</h3>
                             <p class="testimonials-empty-message">We haven't received any testimonials yet. Check back soon!</p>
                         </div>
